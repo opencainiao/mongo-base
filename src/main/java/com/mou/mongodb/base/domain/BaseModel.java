@@ -1,8 +1,8 @@
 package com.mou.mongodb.base.domain;
 
 import org.bson.types.ObjectId;
+import org.mou.common.JsonUtil;
 
-import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mou.mongodb.base.util.Convertor;
 
@@ -12,7 +12,7 @@ import com.mou.mongodb.base.util.Convertor;
  * @author NBQ
  *
  */
-public class BaseModel extends BasicDBObject{
+public class BaseModel {
 
 	protected ObjectId _id;
 	protected String _id_m; // _id的字符串表示
@@ -134,15 +134,8 @@ public class BaseModel extends BasicDBObject{
 
 	@Override
 	public String toString() {
-		
-		try {
-			DBObject dbo = Convertor.bean2DBObject(this);
-			return dbo.toString();
-		} catch (Exception e) {
-			e.printStackTrace();
 
-			return e.getStackTrace().toString();
-		}
+		return JsonUtil.toJsonStr(this);
 
 	}
 

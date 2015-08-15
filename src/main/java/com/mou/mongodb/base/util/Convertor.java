@@ -13,9 +13,11 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.mou.common.JsonUtil;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import com.mongodb.util.JSON;
 
 public class Convertor {
 
@@ -126,19 +128,12 @@ public class Convertor {
 	 * @throws InvocationTargetException
 	 * @throws NoSuchMethodException
 	 */
-	public static <T> T dbObject2Bean(DBObject dbObject, T bean)
+	public static <T> T dbObject2Bean(DBObject dbObject, Class<T> clazz)
 			throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-		if (bean == null) {
+
+		if (dbObject == null) {
 			return null;
 		}
-		Field[] fields = bean.getClass().getDeclaredFields();
-		for (Field field : fields) {
-			String varName = field.getName();
-			Object object = dbObject.get(varName);
-			if (object != null) {
-				BeanUtils.setProperty(bean, varName, object);
-			}
-		}
-		return bean;
+		return JsonUtil.fromJson(JsonUtil.toJsonStr(dbObject), clazz);
 	}
 }
