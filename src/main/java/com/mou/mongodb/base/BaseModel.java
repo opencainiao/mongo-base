@@ -14,14 +14,14 @@ public class BaseModel extends ReflectionDBObject {
 	protected String _id_m; // _id的字符串表示
 	protected String c_date; // 创建日期
 	protected String c_time; // 创建时间
-	protected String c_userid; // 创建用户id
-	protected String c_username;// 创建用户姓名
+	protected String c_user_id; // 创建用户id
+	protected String c_user_name;// 创建用户姓名
 	protected String last_op_user_id;// 最后编辑用户id
 	protected String last_op_user_name;// 最后编辑用户姓名
 	protected String last_op_date; // 最后操作日期
 	protected String last_op_time; // 最后一次操作时间
-	protected String delflg; // 删除标志(用于逻辑删除) 1-已删除
-	protected String delflg_name; // 删除标志名称 0-未删除
+	protected String del_flg; // 删除标志(用于逻辑删除) 1-已删除
+	protected String del_flg_name; // 删除标志名称 0-未删除
 
 	public String get_id_m() {
 		if (super.get_id() == null) {
@@ -44,22 +44,6 @@ public class BaseModel extends ReflectionDBObject {
 
 	public void setC_time(String c_time) {
 		this.c_time = c_time;
-	}
-
-	public String getC_userid() {
-		return c_userid;
-	}
-
-	public void setC_userid(String c_userid) {
-		this.c_userid = c_userid;
-	}
-
-	public String getC_username() {
-		return c_username;
-	}
-
-	public void setC_username(String c_username) {
-		this.c_username = c_username;
 	}
 
 	public String getLast_op_user_id() {
@@ -94,17 +78,41 @@ public class BaseModel extends ReflectionDBObject {
 		this.last_op_time = last_op_time;
 	}
 
-	public String getDelflg() {
-		return delflg;
+	public String getC_user_id() {
+		return c_user_id;
 	}
 
-	public void setDelflg(boolean delflg) {
+	public void setC_user_id(String c_user_id) {
+		this.c_user_id = c_user_id;
+	}
+
+	public String getC_user_name() {
+		return c_user_name;
+	}
+
+	public void setC_user_name(String c_user_name) {
+		this.c_user_name = c_user_name;
+	}
+
+	public String getDel_flg() {
+		return del_flg;
+	}
+
+	public String getDel_flg_name() {
+		return del_flg_name;
+	}
+
+	public void setDel_flg_name(String del_flg_name) {
+		this.del_flg_name = del_flg_name;
+	}
+
+	public void setDel_flg(boolean delflg) {
 		if (delflg) {
-			this.delflg = "1";
-			this.setDelflg_name("已删除");
+			this.del_flg = "1";
+			this.setDel_flg_name("已删除");
 		} else {
-			this.delflg = "0";
-			this.setDelflg_name("正常");
+			this.del_flg = "0";
+			this.setDel_flg_name("正常");
 		}
 	}
 
@@ -112,17 +120,10 @@ public class BaseModel extends ReflectionDBObject {
 		this._id_m = _id_m;
 	}
 
-	public String getDelflg_name() {
-		return delflg_name;
-	}
-
-	private void setDelflg_name(String delflg_name) {
-		this.delflg_name = delflg_name;
-	}
-
 	@Override
 	public String toString() {
 
+		// return JSONSerializers.getStrict().serialize(this);
 		return JSON.serialize(this);
 	}
 

@@ -8,11 +8,20 @@ package com.mou.mongodb.base;
  */
 public class BaseModelWithUseFlg extends BaseModel {
 
-	protected String useflg; // 启用标志 1-启用 0-停用
-	protected String useflg_name; // 启用标志名称
+	protected String use_flg; // 启用标志 1-启用 0-停用
 
-	public String getUseflg() {
-		return useflg;
+	protected String use_flg_name; // 启用标志名称
+
+	public String getUse_flg() {
+		return use_flg;
+	}
+
+	public String getUse_flg_name() {
+		return use_flg_name;
+	}
+
+	public void setUse_flg_name(String use_flg_name) {
+		this.use_flg_name = use_flg_name;
 	}
 
 	/****
@@ -21,22 +30,14 @@ public class BaseModelWithUseFlg extends BaseModel {
 	 * @param useflg
 	 *            true-启用 false-停用
 	 */
-	public void setUseflg(boolean useflg) {
-		if (useflg) {
-			this.useflg = "1";
-			this.setUseflg_name("启用");
+	public void setUse_flg(boolean use_flg) {
+		if (use_flg) {
+			this.use_flg = "1";
+			this.setUse_flg_name("启用");
 		} else {
-			this.useflg = "0";
-			this.setUseflg_name("停用");
+			this.use_flg = "0";
+			this.setUse_flg_name("停用");
 		}
-	}
-
-	public String getUseflg_name() {
-		return useflg_name;
-	}
-
-	private void setUseflg_name(String useflg_name) {
-		this.useflg_name = useflg_name;
 	}
 
 }
