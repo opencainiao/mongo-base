@@ -1,7 +1,10 @@
-package com.mou.mongodb.base;
+package com.mou.mongodb.base.domain;
 
-import com.mongodb.ReflectionDBObject;
-import com.mongodb.util.JSON;
+import org.bson.types.ObjectId;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import com.mou.mongodb.base.util.Convertor;
 
 /****
  * 基于mongodb的基本对象域模型
@@ -9,8 +12,9 @@ import com.mongodb.util.JSON;
  * @author NBQ
  *
  */
-public class BaseModel extends ReflectionDBObject {
+public class BaseModel extends BasicDBObject{
 
+	protected ObjectId _id;
 	protected String _id_m; // _id的字符串表示
 	protected String c_date; // 创建日期
 	protected String c_time; // 创建时间
@@ -24,10 +28,10 @@ public class BaseModel extends ReflectionDBObject {
 	protected String del_flg_name; // 删除标志名称 0-未删除
 
 	public String get_id_m() {
-		if (super.get_id() == null) {
+		if (this.get_id() == null) {
 			return null;
 		}
-		return super.get_id().toString();
+		return get_id().toString();
 	}
 
 	public String getC_date() {
@@ -120,11 +124,26 @@ public class BaseModel extends ReflectionDBObject {
 		this._id_m = _id_m;
 	}
 
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
 	@Override
 	public String toString() {
+		
+		try {
+			DBObject dbo = Convertor.bean2DBObject(this);
+			return dbo.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
 
-		// return JSONSerializers.getStrict().serialize(this);
-		return JSON.serialize(this);
+			return e.getStackTrace().toString();
+		}
+
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.mou.mongodb.base;
+package com.mou.mongodb.base.domain;
 
 /****
  * 带有启用标识的对象基类

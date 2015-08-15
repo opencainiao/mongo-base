@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.mou.mongodb.base.db.op.MongoInsertUtil;
+
 public class BaseObjectTest {
 
 	private static List<Client> makeClients(int num) {
@@ -153,9 +155,12 @@ public class BaseObjectTest {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws Exception {
 		List<Client> clients = makeClients(1);
 		System.out.println(clients);
+		
+		String _id = MongoInsertUtil.insertOne("client", clients.get(0));
+		System.out.println(_id);
 	}
 
 }

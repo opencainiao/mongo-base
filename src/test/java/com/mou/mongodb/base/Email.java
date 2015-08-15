@@ -1,5 +1,6 @@
 package com.mou.mongodb.base;
 
+import com.mou.mongodb.base.domain.BaseModel;
 
 /****
  * 邮箱类

@@ -2,6 +2,8 @@ package com.mou.mongodb.base;
 
 import java.util.List;
 
+import com.mou.mongodb.base.domain.BaseModel;
+
 public class Client extends BaseModel{
 
 	private String owner_user_id; // 归属用户id

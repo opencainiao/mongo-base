@@ -1,5 +1,7 @@
 package com.mou.mongodb.base;
 
+import com.mou.mongodb.base.domain.BaseModel;
+
 /****
  * 地址
  * 
@@ -12,11 +14,11 @@ public class Address extends BaseModel {
 
 	private String type_value; // 地址类型值(枚举值)
 	private String type_name; // 地址类型名称
-	private Integer province; // 省
+	private int province; // 省
 	private String province_name; // 省
-	private Integer city; // 市
+	private int city; // 市
 	private String city_name; // 市
-	private Integer district; // 区
+	private int district; // 区
 	private String district_name; // 区
 	private String detail_address; // 详细地址
 
