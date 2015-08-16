@@ -1,9 +1,9 @@
-package com.mou.mongodb.base.db.op;
+package com.mou.mongodb.base.oridb.op;
 
 import org.bson.types.ObjectId;
 
 import com.mongodb.DBObject;
-import com.mou.mongodb.base.db.manage.DBCollectionUtil;
+import com.mou.mongodb.base.oridb.manage.DBCollectionUtil;
 import com.mou.mongodb.base.util.Convertor;
 
 public class FindOneUtil {

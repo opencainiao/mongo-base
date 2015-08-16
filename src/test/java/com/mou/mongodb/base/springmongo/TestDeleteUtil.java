@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import com.mou.mongodb.base.springdb.db.op.DeleteUtil;
+import com.mou.mongodb.base.springdb.op.DeleteUtil;
 import com.mou.mongodb.base.springmongo.domain.Client;
 
 public class TestDeleteUtil {

@@ -1,4 +1,4 @@
-package com.mou.mongodb.base.db.manage;
+package com.mou.mongodb.base.oridb.manage;
 
 import com.mongodb.DB;
 import com.mongodb.Mongo;

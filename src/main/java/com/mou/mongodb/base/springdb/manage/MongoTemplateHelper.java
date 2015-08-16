@@ -1,4 +1,4 @@
-package com.mou.mongodb.base.springdb.db;
+package com.mou.mongodb.base.springdb.manage;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;

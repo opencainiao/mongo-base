@@ -1,4 +1,4 @@
-package com.mou.mongodb.base.springdb.db.op;
+package com.mou.mongodb.base.springdb.op;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.mongodb.core.MongoOperations;
 
 import com.mou.mongodb.base.domain.BaseModel;
-import com.mou.mongodb.base.springdb.db.MongoTemplateHelper;
+import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
 
 public class InsertUtil {
 

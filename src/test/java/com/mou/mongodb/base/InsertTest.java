@@ -3,7 +3,7 @@ package com.mou.mongodb.base;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mou.mongodb.base.db.op.MongoInsertUtil;
+import com.mou.mongodb.base.oridb.op.MongoInsertUtil;
 
 public class InsertTest {
 	/****

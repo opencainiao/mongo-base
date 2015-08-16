@@ -1,12 +1,12 @@
-package com.mou.mongodb.base.db.op;
+package com.mou.mongodb.base.oridb.op;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.mongodb.DBObject;
 import com.mou.mongodb.base.Address;
-import com.mou.mongodb.base.db.manage.DBCollectionUtil;
 import com.mou.mongodb.base.domain.BaseModel;
+import com.mou.mongodb.base.oridb.manage.DBCollectionUtil;
 import com.mou.mongodb.base.util.Convertor;
 
 public class MongoInsertUtil {

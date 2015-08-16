@@ -1,4 +1,4 @@
-package com.mou.mongodb.base.db.manage;
+package com.mou.mongodb.base.oridb.manage;
 
 import java.util.HashMap;
 import java.util.Map;

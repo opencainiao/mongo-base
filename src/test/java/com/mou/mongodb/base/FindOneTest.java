@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.mou.common.JsonUtil;
 
 import com.mongodb.DBObject;
-import com.mou.mongodb.base.db.op.FindOneUtil;
+import com.mou.mongodb.base.oridb.op.FindOneUtil;
 
 public class FindOneTest {
 

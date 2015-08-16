@@ -7,8 +7,8 @@ import org.junit.Test;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import com.mou.mongodb.base.springdb.db.op.FindOneUtil;
-import com.mou.mongodb.base.springdb.db.op.InsertUtil;
+import com.mou.mongodb.base.springdb.op.FindOneUtil;
+import com.mou.mongodb.base.springdb.op.InsertUtil;
 import com.mou.mongodb.base.springmongo.domain.Address;
 import com.mou.mongodb.base.springmongo.domain.Client;
 import com.mou.mongodb.base.springmongo.domain.Email;

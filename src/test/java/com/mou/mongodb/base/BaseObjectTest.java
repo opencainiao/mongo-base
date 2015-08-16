@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.mou.mongodb.base.db.op.MongoInsertUtil;
+import com.mou.mongodb.base.oridb.op.MongoInsertUtil;
 
 public class BaseObjectTest {
 

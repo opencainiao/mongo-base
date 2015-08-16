@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.MongoOperations;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import com.mou.mongodb.base.springdb.db.MongoTemplateHelper;
-import com.mou.mongodb.base.springdb.db.op.FindOneUtil;
+import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
+import com.mou.mongodb.base.springdb.op.FindOneUtil;
 
 public class Person2Test {
 
