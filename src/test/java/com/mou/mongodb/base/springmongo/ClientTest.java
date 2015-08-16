@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.mou.mongodb.base.Address;
-import com.mou.mongodb.base.Client;
-import com.mou.mongodb.base.Email;
-import com.mou.mongodb.base.Phone;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import com.mou.mongodb.base.springdb.db.op.FindOneUtil;
 import com.mou.mongodb.base.springdb.db.op.InsertUtil;
+import com.mou.mongodb.base.springmongo.domain.Address;
+import com.mou.mongodb.base.springmongo.domain.Client;
+import com.mou.mongodb.base.springmongo.domain.Email;
+import com.mou.mongodb.base.springmongo.domain.Phone;
 
 public class ClientTest {
 
@@ -26,9 +29,26 @@ public class ClientTest {
 
 		// String _id = InsertUtil.insertOne(clients.get(0));
 		// System.out.println(_id);
-		
+
 		List<String> ids = InsertUtil.insertAll(clients);
 		System.out.println(ids);
+	}
+
+	@Test
+	public void testFind() {
+
+		String _id = "55cfeabd7db9c621d4f39918";
+
+		DBObject fields = new BasicDBObject();
+		fields.put("client_name", 1);
+		fields.put("sex", 1);
+		fields.put("id_number", 1);
+		fields.put("birth_date", 1);
+		fields.put("age", 1);
+
+		Client client = FindOneUtil.findOnePartById(_id, fields, Client.class);
+
+		System.out.println(client);
 	}
 
 	private static List<Client> makeClients(int num) {
@@ -47,9 +67,7 @@ public class ClientTest {
 			client.setAnnual_income_personal(25);
 			client.setAnnual_income_personal_type("2");
 			client.setCareer_type("1");
-			if (i % 2 == 0) {
-				client.setClient_name("测试用户_" + i);
-			}
+			client.setClient_name("测试用户_" + i);
 			client.setCompany("中国农业银行xxxx");
 			client.setCompany_nature("1");
 			client.setConstellation("12");

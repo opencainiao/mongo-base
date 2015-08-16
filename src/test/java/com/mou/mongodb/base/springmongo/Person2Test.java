@@ -4,7 +4,10 @@ import org.bson.types.ObjectId;
 import org.junit.Test;
 import org.springframework.data.mongodb.core.MongoOperations;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mou.mongodb.base.springdb.db.MongoTemplateHelper;
+import com.mou.mongodb.base.springdb.db.op.FindOneUtil;
 
 public class Person2Test {
 
@@ -26,6 +29,20 @@ public class Person2Test {
 		System.out.println("_id [" + _id + "]");
 
 		System.out.println("_id_m [" + _id_m + "]");
+	}
+
+	@Test
+	public void testFind() {
+
+		String _id = "55cf52e17db9c61acc27065a";
+
+		DBObject fields = new BasicDBObject();
+		fields.put("name", 1);
+		fields.put("_id", -1);
+
+		Person2 p2 = FindOneUtil.findOnePartById(_id, fields, Person2.class);
+		
+		System.out.println(p2);
 	}
 
 }

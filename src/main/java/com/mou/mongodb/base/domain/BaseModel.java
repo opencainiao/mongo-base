@@ -3,9 +3,6 @@ package com.mou.mongodb.base.domain;
 import org.bson.types.ObjectId;
 import org.mou.common.JsonUtil;
 
-import com.mongodb.DBObject;
-import com.mou.mongodb.base.util.Convertor;
-
 /****
  * 基于mongodb的基本对象域模型
  * 
