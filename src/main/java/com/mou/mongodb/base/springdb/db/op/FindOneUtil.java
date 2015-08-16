@@ -1,7 +1,5 @@
 package com.mou.mongodb.base.springdb.db.op;
 
-import java.util.Set;
-
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -9,7 +7,7 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import com.mongodb.DBObject;
 import com.mou.mongodb.base.springdb.db.MongoTemplateHelper;
-import com.mou.mongodb.base.util.Validator;
+import com.mou.mongodb.base.util.SetInfUtil;
 
 public class FindOneUtil {
 
@@ -60,28 +58,11 @@ public class FindOneUtil {
 			return null;
 		}
 
-		Validator.checkReturnFields(returnFields);
-
-		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-
 		Criteria criteria = Criteria.where("_id").is(_id);
 		Query query = new Query(criteria);
-
-		if (returnFields != null) {
-			Set<String> fieldNames = returnFields.keySet();
-			for (String fieldName : fieldNames) {
-				Object fieldValue = returnFields.get(fieldName);
-				if (fieldValue instanceof Integer) {
-					int value = ((Integer) fieldValue).intValue();
-					if (value == 1) {
-						query.fields().include(fieldName);
-					} else if (value == -1) {
-						query.fields().exclude(fieldName);
-					}
-				}
-			}
-		}
-
+		SetInfUtil.setReturnFields(query, returnFields);
+		
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		return op.findOne(query, entityClass);
 	}
 
@@ -101,28 +82,11 @@ public class FindOneUtil {
 			return null;
 		}
 
-		Validator.checkReturnFields(returnFields);
-
-		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-
 		Criteria criteria = Criteria.where("_id").is(_id);
 		Query query = new Query(criteria);
-
-		if (returnFields != null) {
-			Set<String> fieldNames = returnFields.keySet();
-			for (String fieldName : fieldNames) {
-				Object fieldValue = returnFields.get(fieldName);
-				if (fieldValue instanceof Integer) {
-					int value = ((Integer) fieldValue).intValue();
-					if (value == 1) {
-						query.fields().include(fieldName);
-					} else if (value == -1) {
-						query.fields().exclude(fieldName);
-					}
-				}
-			}
-		}
-
+		SetInfUtil.setReturnFields(query, returnFields);
+		
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		return op.findOne(query, entityClass, collectionName);
 	}
 
@@ -163,25 +127,9 @@ public class FindOneUtil {
 	 */
 	public static <T> T findOnePart(Query query, DBObject returnFields, Class<T> entityClass) {
 
-		Validator.checkReturnFields(returnFields);
-
+		SetInfUtil.setReturnFields(query, returnFields);
+		
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-
-		if (returnFields != null) {
-			Set<String> fieldNames = returnFields.keySet();
-			for (String fieldName : fieldNames) {
-				Object fieldValue = returnFields.get(fieldName);
-				if (fieldValue instanceof Integer) {
-					int value = ((Integer) fieldValue).intValue();
-					if (value == 1) {
-						query.fields().include(fieldName);
-					} else if (value == -1) {
-						query.fields().exclude(fieldName);
-					}
-				}
-			}
-		}
-
 		return op.findOne(query, entityClass);
 	}
 
@@ -196,25 +144,9 @@ public class FindOneUtil {
 	 */
 	public static <T> T findOnePart(Query query, DBObject returnFields, Class<T> entityClass, String collectionName) {
 
-		Validator.checkReturnFields(returnFields);
+		SetInfUtil.setReturnFields(query, returnFields);
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-
-		if (returnFields != null) {
-			Set<String> fieldNames = returnFields.keySet();
-			for (String fieldName : fieldNames) {
-				Object fieldValue = returnFields.get(fieldName);
-				if (fieldValue instanceof Integer) {
-					int value = ((Integer) fieldValue).intValue();
-					if (value == 1) {
-						query.fields().include(fieldName);
-					} else if (value == -1) {
-						query.fields().exclude(fieldName);
-					}
-				}
-			}
-		}
-
 		return op.findOne(query, entityClass, collectionName);
 	}
 }
