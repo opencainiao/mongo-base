@@ -14,7 +14,7 @@ public class Person2Test {
 	@Test
 	public void test() {
 
-		MongoOperations mongoOps = MongoTemplateHelper.getMongoTemplate("bxb_test");
+		MongoOperations mongoOps = MongoTemplateHelper.getMongoTemplate();
 
 		Person2 p2 = new Person2();
 		p2.setAge(15);
@@ -41,7 +41,7 @@ public class Person2Test {
 		fields.put("_id", -1);
 
 		Person2 p2 = FindOneUtil.findOnePartById(_id, fields, Person2.class);
-		
+
 		System.out.println(p2);
 	}
 

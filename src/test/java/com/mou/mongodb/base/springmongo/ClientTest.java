@@ -37,7 +37,7 @@ public class ClientTest {
 	@Test
 	public void testFind() {
 
-		String _id = "55cfeabd7db9c621d4f39918";
+		String _id = "55d0910f7db9c61e6077ae80";
 
 		DBObject fields = new BasicDBObject();
 		fields.put("client_name", 1);
