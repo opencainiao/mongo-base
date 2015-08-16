@@ -9,6 +9,12 @@ import com.mongodb.DBObject;
 import com.mou.mongodb.base.springdb.db.MongoTemplateHelper;
 import com.mou.mongodb.base.util.SetInfUtil;
 
+/****
+ * 查询单条数据的帮助类
+ * 
+ * @author NBQ
+ *
+ */
 public class FindOneUtil {
 
 	/****
@@ -61,7 +67,7 @@ public class FindOneUtil {
 		Criteria criteria = Criteria.where("_id").is(_id);
 		Query query = new Query(criteria);
 		SetInfUtil.setReturnFields(query, returnFields);
-		
+
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		return op.findOne(query, entityClass);
 	}
@@ -85,7 +91,7 @@ public class FindOneUtil {
 		Criteria criteria = Criteria.where("_id").is(_id);
 		Query query = new Query(criteria);
 		SetInfUtil.setReturnFields(query, returnFields);
-		
+
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		return op.findOne(query, entityClass, collectionName);
 	}
@@ -128,7 +134,7 @@ public class FindOneUtil {
 	public static <T> T findOnePart(Query query, DBObject returnFields, Class<T> entityClass) {
 
 		SetInfUtil.setReturnFields(query, returnFields);
-		
+
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		return op.findOne(query, entityClass);
 	}

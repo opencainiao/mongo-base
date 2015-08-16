@@ -7,6 +7,12 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import com.mou.mongodb.base.springdb.db.MongoTemplateHelper;
 
+/****
+ * 删除数据的帮助类
+ * 
+ * @author NBQ
+ *
+ */
 public class DeleteUtil {
 
 	/****

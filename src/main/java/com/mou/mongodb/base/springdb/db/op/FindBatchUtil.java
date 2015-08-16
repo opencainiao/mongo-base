@@ -9,6 +9,12 @@ import com.mongodb.DBObject;
 import com.mou.mongodb.base.springdb.db.MongoTemplateHelper;
 import com.mou.mongodb.base.util.SetInfUtil;
 
+/****
+ * 批量查询的帮助类
+ * 
+ * @author NBQ
+ *
+ */
 public class FindBatchUtil {
 
 	/****
@@ -88,7 +94,7 @@ public class FindBatchUtil {
 			String collectionName) {
 
 		SetInfUtil.setReturnFields(query, returnFields);
-		
+
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		return op.find(query, entityClass, collectionName);
 	}
