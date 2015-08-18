@@ -2,9 +2,12 @@ package com.mou.mongodb.base.dao;
 
 import java.util.List;
 
-import com.mongodb.BulkWriteResult;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.query.Query;
+
 import com.mongodb.DBObject;
-import com.mongodb.WriteResult;
+import com.mou.mongodb.base.domain.BaseModel;
+import com.mou.mongodb.base.domain.PageVO;
 
 /****
  * 通用持久层基础类
@@ -15,123 +18,323 @@ import com.mongodb.WriteResult;
 public interface IBaseDao {
 
 	/****
-	 * 判断一个表的某记录是否存在
+	 * 插入一个对象
 	 * 
 	 * @param collectionName
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	public String insertOne(BaseModel model);
+
+	/****
+	 * 插入一组对象
+	 * 
+	 * @param collectionName
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	public List<String> insertAll(List<? extends BaseModel> models);
+
+	/****
+	 * 删除一条
+	 * 
 	 * @param _id
+	 * @param entityClass
 	 * @return
 	 */
-	public boolean isExist(String _id);
+	public <T> int removeById(String _id, Class<T> entityClass);
 
 	/****
-	 * 根据id，查询一个对象
+	 * 删除一条
 	 * 
-	 * @param collectionName
 	 * @param _id
-	 * @param clazz
+	 * @param entityClass
+	 * @param collectionName
 	 * @return
 	 */
-	public <T> T findOneByIdObject(String _id, Class<T> clazz);
+	public int removeById(String _id, String collectionName);
 
 	/****
-	 * 根据id，查询一个对象的部分信息
+	 * 删除全部满足条件的数据
 	 * 
+	 * @param _id
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> int removeByCondition(Query query, Class<T> entityClass);
+
+	/****
+	 * 删除全部满足条件的数据
+	 * 
+	 * @param _id
+	 * @param entityClass
 	 * @param collectionName
+	 * @return
+	 */
+	public int removeByCondition(Query query, String collectionName);
+
+	/****
+	 * 删除一条
+	 * 
+	 * @param _id
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> int removeByIdLogic(String _id, Class<T> entityClass);
+
+	/****
+	 * 删除一条
+	 * 
+	 * @param _id
+	 * @param entityClass
+	 * @param collectionName
+	 * @return
+	 */
+	public int removeByIdLogic(String _id, String collectionName);
+
+	/****
+	 * 删除全部满足条件的数据
+	 * 
+	 * @param _id
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> int removeByConditionLogic(Query query, Class<T> entityClass);
+
+	/****
+	 * 删除全部满足条件的数据
+	 * 
+	 * @param _id
+	 * @param entityClass
+	 * @param collectionName
+	 * @return
+	 */
+	public int removeByConditionLogic(Query query, String collectionName);
+
+	/****
+	 * 删除数据，根据ids（逻辑删除）
+	 * 
+	 * @param _ids
+	 * @return
+	 */
+	public <T> int removeByIdsLogic(List<String> _ids, Class<T> entityClass);
+
+	/****
+	 * 删除数据，根据ids（逻辑删除）
+	 * 
+	 * @param _ids
+	 * @return
+	 */
+	public int removeByIdsLogic(List<String> _ids, String collectionName);
+
+	/****
+	 * 删除数据，根据ids
+	 * 
+	 * @param _ids
+	 * @return
+	 */
+	public <T> int removeByIds(List<String> _ids, Class<T> entityClass);
+
+	/****
+	 * 删除数据，根据ids
+	 * 
+	 * @param _ids
+	 * @return
+	 */
+	public int removeByIds(List<String> _ids, String collectionName);
+
+	/****
+	 * 查询一个对象
+	 * 
+	 * @param _id
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> T findOneById(String _id, Class<T> entityClass);
+
+	/****
+	 * 查询一个对象
+	 * 
+	 * @param _id
+	 * @param entityClass
+	 * @param collectionName
+	 * @return
+	 */
+	public <T> T findOneById(String _id, Class<T> entityClass,
+			String collectionName);
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
 	 * @param _id
 	 * @param returnFields
+	 * @param entityClass
 	 * @return
 	 */
-	public DBObject findOneByIdPart(String _id, DBObject returnFields);
+	public <T> T findOnePartById(String _id, DBObject returnFields,
+			Class<T> entityClass);
 
 	/****
-	 * 根据条件查询一个对象
+	 * 查询一个对象的一部分
 	 * 
+	 * @param _id
+	 * @param returnFields
+	 * @param entityClass
 	 * @param collectionName
-	 * @param queryCondition
-	 * @param clazz
 	 * @return
 	 */
-	public <T> T findOneByConditionObject(DBObject queryCondition, Class<T> clazz);
+	public <T> T findOnePartById(String _id, DBObject returnFields,
+			Class<T> entityClass, String collectionName);
 
 	/****
-	 * 根据条件，查询一个对象的部分信息
+	 * 查询一个对象
 	 * 
+	 * @param query
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> T findOne(Query query, Class<T> entityClass);
+
+	/****
+	 * 查询一个对象
+	 * 
+	 * @param query
+	 * @param entityClass
 	 * @param collectionName
-	 * @param queryCondition
-	 * @param returnFields
 	 * @return
 	 */
-	public DBObject findOneByConditionPart(DBObject queryCondition, DBObject returnFields);
+	public <T> T findOne(Query query, Class<T> entityClass,
+			String collectionName);
 
 	/****
-	 * 条件查询，分页
+	 * 查询一个对象的一部分
+	 * 
+	 * @param _id
+	 * @param returnFields
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> T findOnePart(Query query, DBObject returnFields,
+			Class<T> entityClass);
+
+	/****
+	 * 查询一个对象的一部分
 	 * 
 	 * @param query
-	 * @param sort
 	 * @param returnFields
+	 * @param entityClass
+	 * @param collectionName
 	 * @return
 	 */
-	public PageVO batchSearchPage(DBObject query, DBObject sort, DBObject returnFields);
+	public <T> T findOnePart(Query query, DBObject returnFields,
+			Class<T> entityClass, String collectionName);
 
 	/****
-	 * 条件查询,不分页,返回DBObject
+	 * 查询全部
+	 * 
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> List<T> findAll(Class<T> entityClass);
+
+	/****
+	 * 查询全部
+	 * 
+	 * @param entityClass
+	 * @param collectionName
+	 * @return
+	 */
+	public <T> List<T> findAll(Class<T> entityClass, String collectionName);
+
+	/****
+	 * 查询多条
 	 * 
 	 * @param query
-	 * @param sort
-	 * @param returnFields
+	 * @param entityClass
 	 * @return
 	 */
-	public List<DBObject> findBatchDbOjbect(DBObject query, DBObject sort, DBObject returnFields);
+	public <T> List<T> findBatch(Query query, Sort sort, Class<T> entityClass);
 
 	/****
-	 * 条件查询，不分页，返回对象
+	 * 查询多条
 	 * 
 	 * @param query
-	 * @param clazz
-	 * @param sort
+	 * @param entityClass
 	 * @return
 	 */
-	public <T> List<T> findBatchObject(DBObject query, Class<T> clazz, DBObject sort);
+	public <T> List<T> findBatch(Query query, Class<T> entityClass, Sort sort,
+			String collectionName);
 
 	/****
-	 * 条件查询，1页，只查询指定的条数
+	 * 查询多条对象的一部分
 	 * 
 	 * @param query
-	 * @param sort
 	 * @param returnFields
-	 * @param count
-	 *            指定查询的条数
+	 * @param entityClass
 	 * @return
 	 */
-	public PageVO batchSearchOnePage(DBObject query, DBObject sort, DBObject returnFields, int count);
+	public <T> List<T> findBatchPart(Query query, DBObject returnFields,
+			Sort sort, Class<T> entityClass);
 
 	/****
-	 * 条件查询，1页，查询所有
+	 * 查询多条对象的一部分
 	 * 
 	 * @param query
-	 * @param sort
 	 * @param returnFields
+	 * @param entityClass
+	 * @param collectionName
 	 * @return
 	 */
-	public PageVO batchSearchOnePage(DBObject query, DBObject sort, DBObject returnFields);
+	public <T> List<T> findBatchPart(Query query, DBObject returnFields,
+			Sort sort, Class<T> entityClass, String collectionName);
 
 	/****
-	 * 插入对象，返回插入后的生成的ObjectId
+	 * 查询多条
 	 * 
-	 * @param obj
+	 * @param query
+	 * @param entityClass
 	 * @return
 	 */
-	public String insertObj(Object obj);
+	public <T> List<T> findBatchPage(Query query, Class<T> entityClass,
+			PageVO pageVO, Sort sort);
 
 	/****
-	 * 批量插入
+	 * 查询多条
 	 * 
-	 * @param objs
-	 * @param isOrder
-	 *            是否有序插入 true-有序 false-无序
+	 * @param query
+	 * @param entityClass
 	 * @return
 	 */
-	public BulkWriteResult batchInsertObjs(List<? extends Object> objs, boolean isOrder);
+	public <T> List<T> findBatchPage(Query query, Class<T> entityClass,
+			String collectionName, PageVO pageVO, Sort sort);
+
+	/****
+	 * 查询多条对象的一部分
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> List<T> findBatchPartPage(Query query, DBObject returnFields,
+			Class<T> entityClass, PageVO pageVO, Sort sort);
+
+	/****
+	 * 查询多条对象的一部分
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param entityClass
+	 * @param collectionName
+	 * @return
+	 */
+	public <T> List<T> findBatchPartPage(Query query, DBObject returnFields,
+			Class<T> entityClass, String collectionName, PageVO pageVO,
+			Sort sort);
+
+	// -----------------------------------------------------------------------
 
 	/****
 	 * 更新一条记录，返回更新后的结果，根据查询条件
@@ -144,7 +347,8 @@ public interface IBaseDao {
 	 *            true-不存在则创建,false-不存在不处理
 	 * @return
 	 */
-	public DBObject updateOneByCondition(DBObject query, DBObject returnFields, DBObject update, boolean upsert);
+	public DBObject updateOneByCondition(DBObject query, DBObject returnFields,
+			DBObject update, boolean upsert);
 
 	/****
 	 * 更新一条记录，返回更新后的结果，根据对象的主键ObjectId
@@ -154,47 +358,7 @@ public interface IBaseDao {
 	 * @param update
 	 * @return
 	 */
-	public DBObject updateOneById(String _id, DBObject returnFields, DBObject update);
+	public DBObject updateOneById(String _id, DBObject returnFields,
+			DBObject update);
 
-	/****
-	 * 查询并删除一条记录
-	 * 
-	 * @param _id
-	 * @return
-	 */
-	public DBObject findAndRemoveOneById(String _id);
-
-	/****
-	 * 查询并删除一条记录(逻辑删除)<br>
-	 * 
-	 * delflg - 1 已删除 0 未删除
-	 * 
-	 * @param _id
-	 * @return
-	 */
-	public DBObject findAndRemoveOneByIdLogic(String _id, DBObject updateSet);
-
-	/****
-	 * 删除数据，根据ids
-	 * 
-	 * @param _ids
-	 * @return
-	 */
-	public WriteResult removeByIds(List<String> _ids);
-
-	/****
-	 * 删除数据,根据ids(逻辑删除)<br>
-	 * 
-	 * @param _ids
-	 * @return
-	 */
-	public WriteResult removeByIdsLogic(List<String> _ids, DBObject updateSet);
-
-	/****
-	 * 根据条件删除(物理删除)
-	 * 
-	 * @param query
-	 * @return
-	 */
-	public WriteResult remove(DBObject query);
 }
