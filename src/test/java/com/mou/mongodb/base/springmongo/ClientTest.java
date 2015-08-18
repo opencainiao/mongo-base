@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import com.mou.mongodb.base.springdb.op.DeleteUtil;
 import com.mou.mongodb.base.springdb.op.FindOneUtil;
 import com.mou.mongodb.base.springdb.op.InsertUtil;
 import com.mou.mongodb.base.springmongo.domain.Address;
@@ -19,6 +22,10 @@ public class ClientTest {
 	@Test
 	public void testInsert() {
 
+		Criteria criteria = Criteria.where("sex").is("1");
+		Query query = new Query(criteria);
+		DeleteUtil.removeByCondition(query, Client.class);
+		
 		List<Client> clients = makeClients(3);
 		System.out.println(clients);
 

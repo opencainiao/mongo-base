@@ -21,6 +21,8 @@ public class InsertUtil {
 	public static String insertOne(BaseModel model) {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+
+		model.setDel_flg(false);
 		op.insert(model);
 
 		return model.get_id_m();
@@ -36,6 +38,10 @@ public class InsertUtil {
 	 */
 	public static List<String> insertAll(List<? extends BaseModel> models) {
 
+		for (BaseModel model : models) {
+			model.setDel_flg(false);
+		}
+		
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		op.insertAll(models);
 

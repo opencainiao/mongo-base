@@ -104,7 +104,7 @@ public class DeleteUtil {
 		Query query = new Query(criteria);
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		Update update = new Update().set("delflg", "1");
+		Update update = new Update().set("del_flg", "1");
 
 		return op.updateFirst(query, update, entityClass).getN();
 
@@ -128,7 +128,7 @@ public class DeleteUtil {
 		Query query = new Query(criteria);
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		Update update = new Update().set("delflg", "1");
+		Update update = new Update().set("del_flg", "1");
 
 		return op.updateFirst(query, update, collectionName).getN();
 	}
@@ -145,7 +145,7 @@ public class DeleteUtil {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 
-		Update update = new Update().set("delflg", "1");
+		Update update = new Update().set("del_flg", "1");
 
 		return op.updateMulti(query, update, entityClass).getN();
 	}
@@ -162,7 +162,7 @@ public class DeleteUtil {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 
-		Update update = new Update().set("delflg", "1");
+		Update update = new Update().set("del_flg", "1");
 
 		return op.updateMulti(query, update, collectionName).getN();
 	}
@@ -188,7 +188,7 @@ public class DeleteUtil {
 		Query query = new Query(criteria);
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		Update update = new Update().set("delflg", "1");
+		Update update = new Update().set("del_flg", "1");
 
 		return op.updateFirst(query, update, entityClass).getN();
 	}
@@ -213,7 +213,7 @@ public class DeleteUtil {
 		Query query = new Query(criteria);
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		Update update = new Update().set("delflg", "1");
+		Update update = new Update().set("del_flg", "1");
 
 		return op.updateFirst(query, update, collectionName).getN();
 	}
