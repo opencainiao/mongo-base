@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Query;
 
 import com.mongodb.DBObject;
+import com.mongodb.WriteResult;
 import com.mou.mongodb.base.domain.BaseModel;
 import com.mou.mongodb.base.domain.PageVO;
 
@@ -334,31 +335,77 @@ public interface IBaseDao {
 			Class<T> entityClass, String collectionName, PageVO pageVO,
 			Sort sort);
 
-	// -----------------------------------------------------------------------
-
 	/****
-	 * 更新一条记录，返回更新后的结果，根据查询条件
-	 * 
-	 * @param query
-	 * @param returnFields
-	 *            指定更新后返回的数据域
-	 * @param update
-	 * @param upsert
-	 *            true-不存在则创建,false-不存在不处理
-	 * @return
-	 */
-	public DBObject updateOneByCondition(DBObject query, DBObject returnFields,
-			DBObject update, boolean upsert);
-
-	/****
-	 * 更新一条记录，返回更新后的结果，根据对象的主键ObjectId
+	 * 根据主键，更新一条记录
 	 * 
 	 * @param _id
 	 * @param returnFields
 	 * @param update
+	 * @param entityClass
 	 * @return
 	 */
-	public DBObject updateOneById(String _id, DBObject returnFields,
-			DBObject update);
+	public <T> DBObject updateOneById(String _id, DBObject returnFields,
+			DBObject update, Class<T> entityClass);
 
+	/****
+	 * 根据主键，更新一条记录
+	 * 
+	 * @param _id
+	 * @param returnFields
+	 * @param update
+	 * @param collectionName
+	 * @return
+	 */
+	public <T> DBObject updateOneById(String _id, DBObject returnFields,
+			DBObject update, String collectionName);
+
+	/****
+	 * 根据条件，更新一条记录
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param update
+	 * @param upsert
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> DBObject updateOneByCondition(DBObject query,
+			DBObject returnFields, DBObject update, boolean upsert,
+			Class<T> entityClass);
+
+	/****
+	 * 根据条件，更新一条记录
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param update
+	 * @param upsert
+	 * @param collectionName
+	 * @return
+	 */
+	public <T> DBObject updateOneByCondition(DBObject query,
+			DBObject returnFields, DBObject update, boolean upsert,
+			String collectionName);
+
+	/****
+	 * 根据条件更新数据，如果有多条，则全部更新
+	 * 
+	 * @param entityClass
+	 * @param query
+	 * @param update
+	 * @return
+	 */
+	public <T> WriteResult updateMultiByCondition(Class<T> entityClass,
+			final DBObject query, final DBObject update);
+
+	/****
+	 * 根据条件更新数据，如果有多条，则全部更新
+	 * 
+	 * @param collectionName
+	 * @param query
+	 * @param update
+	 * @return
+	 */
+	public <T> WriteResult updateMultiByCondition(String collectionName,
+			final DBObject query, final DBObject update);
 }

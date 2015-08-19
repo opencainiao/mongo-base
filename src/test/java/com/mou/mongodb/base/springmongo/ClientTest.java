@@ -22,6 +22,7 @@ public class ClientTest {
 	@Test
 	public void testInsert() {
 
+		// 先删除
 		Criteria criteria = Criteria.where("sex").is("1");
 		Query query = new Query(criteria);
 		DeleteUtil.removeByCondition(query, Client.class);
@@ -37,6 +38,7 @@ public class ClientTest {
 		// String _id = InsertUtil.insertOne(clients.get(0));
 		// System.out.println(_id);
 
+		// 再增加
 		List<String> ids = InsertUtil.insertAll(clients);
 		System.out.println(ids);
 	}
