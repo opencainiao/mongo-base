@@ -1,4 +1,4 @@
-package com.mou.mongodb.base.springdb.op;
+package com.mou.mongodb.base.springdb.dao;
 
 import java.util.List;
 
@@ -7,11 +7,15 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
-import com.mou.mongodb.base.dao.IBaseDao;
 import com.mou.mongodb.base.domain.BaseModel;
 import com.mou.mongodb.base.domain.PageVO;
+import com.mou.mongodb.base.springdb.op.DeleteUtil;
+import com.mou.mongodb.base.springdb.op.FindBatchUtil;
+import com.mou.mongodb.base.springdb.op.FindOneUtil;
+import com.mou.mongodb.base.springdb.op.InsertUtil;
+import com.mou.mongodb.base.springdb.op.UpdateUtil;
 
-public class CommonDaoMongo implements IBaseDao {
+public class CommonDaoMongo implements IBaseDaoMongo {
 
 	public String insertOne(BaseModel model) {
 		return InsertUtil.insertOne(model);

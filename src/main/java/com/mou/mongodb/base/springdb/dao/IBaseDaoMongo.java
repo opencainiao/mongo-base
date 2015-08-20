@@ -1,4 +1,4 @@
-package com.mou.mongodb.base.dao;
+package com.mou.mongodb.base.springdb.dao;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.mou.mongodb.base.domain.PageVO;
  * @author NBQ
  *
  */
-public interface IBaseDao {
+public interface IBaseDaoMongo {
 
 	/****
 	 * 插入一个对象
