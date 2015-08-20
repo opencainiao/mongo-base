@@ -74,7 +74,8 @@ public class MongoManager {
 			}
 		}
 
-		String host = "182.92.114.61";// 主机名
+		// String host = "182.92.114.61";// 主机名
+		 String host = "localhost";// 主机名
 		int port = 27017;// 端口
 
 		// 其他参数根据实际情况进行添加
