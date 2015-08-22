@@ -1,0 +1,6 @@
+#surefire
+#Sat Aug 22 10:23:37 CST 2015
+user.dir=G\:\\niu\\DEV\\PRJECT\\git\\mongo-base
+net.sourceforge.cobertura.datafile=target/cobertura/cobertura.ser
+localRepository=G\:\\niu\\DEV\\MAVEN\\repo
+basedir=G\:\\niu\\DEV\\PRJECT\\git\\mongo-base
