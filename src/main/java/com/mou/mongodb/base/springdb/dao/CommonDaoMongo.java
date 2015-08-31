@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Repository;
 
 import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
@@ -15,6 +16,7 @@ import com.mou.mongodb.base.springdb.op.FindOneUtil;
 import com.mou.mongodb.base.springdb.op.InsertUtil;
 import com.mou.mongodb.base.springdb.op.UpdateUtil;
 
+@Repository("commonDaoMongo")
 public class CommonDaoMongo implements IBaseDaoMongo {
 
 	public String insertOne(BaseModel model) {

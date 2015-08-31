@@ -1,6 +1,7 @@
 package com.mou.mongodb.base.domain;
 
 import org.bson.types.ObjectId;
+import org.mou.common.DateUtil;
 import org.mou.common.JsonUtil;
 
 /****
@@ -127,6 +128,22 @@ public class BaseModel {
 
 	public void set_id(ObjectId _id) {
 		this._id = _id;
+	}
+
+	/****
+	 * 设置对象创建信息
+	 * 
+	 * @param model
+	 */
+	public void setCreateInfo() {
+		String date = DateUtil.getCurdate();
+		String time = DateUtil.getCurrentTimsmp();
+
+		this.setC_time(time);
+		this.setC_date(date);
+		this.setDel_flg(false);
+		this.setLast_op_time(time);
+		this.setLast_op_date(date);
 	}
 
 	@Override
