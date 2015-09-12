@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.033" errors="0" skipped="0" tests="6" name="com.mou.mongodb.base.springmongo.TestUpdate">
+<testsuite failures="0" time="0.092" errors="0" skipped="0" tests="6" name="com.mou.mongodb.base.springmongo.TestUpdate">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_51\jre\bin"/>
-    <property name="java.vm.version" value="24.51-b03"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre7\bin"/>
+    <property name="java.vm.version" value="24.80-b11"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
@@ -12,49 +12,49 @@
     <property name="user.script" value=""/>
     <property name="user.country" value="CN"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="F:\git\mongo-base"/>
-    <property name="java.runtime.version" value="1.7.0_51-b13"/>
+    <property name="user.dir" value="G:\niu\DEV\PRJECT\git\mongo-base"/>
+    <property name="java.runtime.version" value="1.7.0_80-b15"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="basedir" value="F:\git\mongo-base"/>
-    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.7.0_51\jre\lib\endorsed"/>
+    <property name="basedir" value="G:\niu\DEV\PRJECT\git\mongo-base"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre7\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="surefire.real.class.path" value="F:\git\mongo-base\target\surefire\surefirebooter1718540564794193799.jar"/>
+    <property name="surefire.real.class.path" value="G:\niu\DEV\PRJECT\git\mongo-base\target\surefire\surefirebooter8376901563327882102.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\sks\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
-    <property name="os.name" value="Windows 7"/>
+    <property name="os.name" value="Windows 8.1"/>
     <property name="net.sourceforge.cobertura.datafile" value="target/cobertura/cobertura.ser"/>
     <property name="sun.jnu.encoding" value="GBK"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.7.0_51\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\NetSarang;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Lenovo\Fingerprint Manager Pro\;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files\MongoDB\Server\3.0\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\nodejs\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;F:\maven\apache-maven-3.2.1\bin;C:\Program Files (x86)\IDM Computer Solutions\UltraEdit\;C:\Users\sks\AppData\Roaming\npm;F:\soft\adt-bundle-windows-x86_64-20140321\adt-bundle-windows-x86_64-20140321\sdk\platform-tools;."/>
-    <property name="surefire.test.class.path" value="F:\git\mongo-base\target\test-classes;F:\git\mongo-base\target\classes;C:\Users\sks\.m2\repository\org\mongodb\mongo-java-driver\3.0.3\mongo-java-driver-3.0.3.jar;C:\Users\sks\.m2\repository\commons-beanutils\commons-beanutils\1.9.2\commons-beanutils-1.9.2.jar;C:\Users\sks\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;C:\Users\sks\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\Users\sks\.m2\repository\org\mou\mou-common\0.0.1-SNAPSHOT\mou-common-0.0.1-SNAPSHOT.jar;C:\Users\sks\.m2\repository\com\google\code\gson\gson\2.3.1\gson-2.3.1.jar;C:\Users\sks\.m2\repository\joda-time\joda-time\2.8.1\joda-time-2.8.1.jar;C:\Users\sks\.m2\repository\org\springframework\data\spring-data-mongodb\1.7.2.RELEASE\spring-data-mongodb-1.7.2.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-tx\4.0.9.RELEASE\spring-tx-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-context\4.0.9.RELEASE\spring-context-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-aop\4.0.9.RELEASE\spring-aop-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\sks\.m2\repository\org\springframework\spring-beans\4.0.9.RELEASE\spring-beans-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-core\4.0.9.RELEASE\spring-core-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-expression\4.0.9.RELEASE\spring-expression-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\data\spring-data-commons\1.10.2.RELEASE\spring-data-commons-1.10.2.RELEASE.jar;C:\Users\sks\.m2\repository\org\slf4j\slf4j-api\1.7.12\slf4j-api-1.7.12.jar;C:\Users\sks\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.12\jcl-over-slf4j-1.7.12.jar;C:\Users\sks\.m2\repository\org\apache\logging\log4j\log4j-slf4j-impl\2.3\log4j-slf4j-impl-2.3.jar;C:\Users\sks\.m2\repository\org\apache\logging\log4j\log4j-api\2.3\log4j-api-2.3.jar;C:\Users\sks\.m2\repository\org\apache\logging\log4j\log4j-core\2.3\log4j-core-2.3.jar;C:\Users\sks\.m2\repository\junit\junit\4.10\junit-4.10.jar;C:\Users\sks\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jre7\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\NetSarang;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;G:\soft\DEV\apache-maven-3.3.3\bin;C:\Program Files (x86)\Intel\Services\IPT\；C:\Program Files\MongoDB\Server\3.0\bin;C:\Program Files (x86)\IDM Computer Solutions\UltraEdit\;."/>
+    <property name="surefire.test.class.path" value="G:\niu\DEV\PRJECT\git\mongo-base\target\test-classes;G:\niu\DEV\PRJECT\git\mongo-base\target\classes;G:\niu\DEV\MAVEN\repo\org\mongodb\mongo-java-driver\3.0.3\mongo-java-driver-3.0.3.jar;G:\niu\DEV\MAVEN\repo\commons-beanutils\commons-beanutils\1.9.2\commons-beanutils-1.9.2.jar;G:\niu\DEV\MAVEN\repo\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;G:\niu\DEV\MAVEN\repo\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;G:\niu\DEV\MAVEN\repo\org\mou\mou-common\0.0.1-SNAPSHOT\mou-common-0.0.1-SNAPSHOT.jar;G:\niu\DEV\MAVEN\repo\com\google\code\gson\gson\2.3.1\gson-2.3.1.jar;G:\niu\DEV\MAVEN\repo\joda-time\joda-time\2.8.1\joda-time-2.8.1.jar;G:\niu\DEV\MAVEN\repo\org\springframework\data\spring-data-mongodb\1.7.2.RELEASE\spring-data-mongodb-1.7.2.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-tx\4.0.9.RELEASE\spring-tx-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-context\4.0.9.RELEASE\spring-context-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-aop\4.0.9.RELEASE\spring-aop-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-beans\4.0.9.RELEASE\spring-beans-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-core\4.0.9.RELEASE\spring-core-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-expression\4.0.9.RELEASE\spring-expression-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\data\spring-data-commons\1.10.2.RELEASE\spring-data-commons-1.10.2.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\slf4j\slf4j-api\1.7.12\slf4j-api-1.7.12.jar;G:\niu\DEV\MAVEN\repo\org\slf4j\jcl-over-slf4j\1.7.12\jcl-over-slf4j-1.7.12.jar;G:\niu\DEV\MAVEN\repo\org\apache\logging\log4j\log4j-slf4j-impl\2.3\log4j-slf4j-impl-2.3.jar;G:\niu\DEV\MAVEN\repo\org\apache\logging\log4j\log4j-api\2.3\log4j-api-2.3.jar;G:\niu\DEV\MAVEN\repo\org\apache\logging\log4j\log4j-core\2.3\log4j-core-2.3.jar;G:\niu\DEV\MAVEN\repo\junit\junit\4.10\junit-4.10.jar;G:\niu\DEV\MAVEN\repo\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="51.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="6.1"/>
+    <property name="os.version" value="6.3"/>
     <property name="user.home" value="C:\Users\sks"/>
     <property name="user.timezone" value="Asia/Shanghai"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.7"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="user.name" value="sks"/>
-    <property name="java.class.path" value="F:\git\mongo-base\target\test-classes;F:\git\mongo-base\target\classes;C:\Users\sks\.m2\repository\org\mongodb\mongo-java-driver\3.0.3\mongo-java-driver-3.0.3.jar;C:\Users\sks\.m2\repository\commons-beanutils\commons-beanutils\1.9.2\commons-beanutils-1.9.2.jar;C:\Users\sks\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;C:\Users\sks\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\Users\sks\.m2\repository\org\mou\mou-common\0.0.1-SNAPSHOT\mou-common-0.0.1-SNAPSHOT.jar;C:\Users\sks\.m2\repository\com\google\code\gson\gson\2.3.1\gson-2.3.1.jar;C:\Users\sks\.m2\repository\joda-time\joda-time\2.8.1\joda-time-2.8.1.jar;C:\Users\sks\.m2\repository\org\springframework\data\spring-data-mongodb\1.7.2.RELEASE\spring-data-mongodb-1.7.2.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-tx\4.0.9.RELEASE\spring-tx-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-context\4.0.9.RELEASE\spring-context-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-aop\4.0.9.RELEASE\spring-aop-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\sks\.m2\repository\org\springframework\spring-beans\4.0.9.RELEASE\spring-beans-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-core\4.0.9.RELEASE\spring-core-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\spring-expression\4.0.9.RELEASE\spring-expression-4.0.9.RELEASE.jar;C:\Users\sks\.m2\repository\org\springframework\data\spring-data-commons\1.10.2.RELEASE\spring-data-commons-1.10.2.RELEASE.jar;C:\Users\sks\.m2\repository\org\slf4j\slf4j-api\1.7.12\slf4j-api-1.7.12.jar;C:\Users\sks\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.12\jcl-over-slf4j-1.7.12.jar;C:\Users\sks\.m2\repository\org\apache\logging\log4j\log4j-slf4j-impl\2.3\log4j-slf4j-impl-2.3.jar;C:\Users\sks\.m2\repository\org\apache\logging\log4j\log4j-api\2.3\log4j-api-2.3.jar;C:\Users\sks\.m2\repository\org\apache\logging\log4j\log4j-core\2.3\log4j-core-2.3.jar;C:\Users\sks\.m2\repository\junit\junit\4.10\junit-4.10.jar;C:\Users\sks\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;"/>
+    <property name="java.class.path" value="G:\niu\DEV\PRJECT\git\mongo-base\target\test-classes;G:\niu\DEV\PRJECT\git\mongo-base\target\classes;G:\niu\DEV\MAVEN\repo\org\mongodb\mongo-java-driver\3.0.3\mongo-java-driver-3.0.3.jar;G:\niu\DEV\MAVEN\repo\commons-beanutils\commons-beanutils\1.9.2\commons-beanutils-1.9.2.jar;G:\niu\DEV\MAVEN\repo\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;G:\niu\DEV\MAVEN\repo\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;G:\niu\DEV\MAVEN\repo\org\mou\mou-common\0.0.1-SNAPSHOT\mou-common-0.0.1-SNAPSHOT.jar;G:\niu\DEV\MAVEN\repo\com\google\code\gson\gson\2.3.1\gson-2.3.1.jar;G:\niu\DEV\MAVEN\repo\joda-time\joda-time\2.8.1\joda-time-2.8.1.jar;G:\niu\DEV\MAVEN\repo\org\springframework\data\spring-data-mongodb\1.7.2.RELEASE\spring-data-mongodb-1.7.2.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-tx\4.0.9.RELEASE\spring-tx-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-context\4.0.9.RELEASE\spring-context-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-aop\4.0.9.RELEASE\spring-aop-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-beans\4.0.9.RELEASE\spring-beans-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-core\4.0.9.RELEASE\spring-core-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\spring-expression\4.0.9.RELEASE\spring-expression-4.0.9.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\springframework\data\spring-data-commons\1.10.2.RELEASE\spring-data-commons-1.10.2.RELEASE.jar;G:\niu\DEV\MAVEN\repo\org\slf4j\slf4j-api\1.7.12\slf4j-api-1.7.12.jar;G:\niu\DEV\MAVEN\repo\org\slf4j\jcl-over-slf4j\1.7.12\jcl-over-slf4j-1.7.12.jar;G:\niu\DEV\MAVEN\repo\org\apache\logging\log4j\log4j-slf4j-impl\2.3\log4j-slf4j-impl-2.3.jar;G:\niu\DEV\MAVEN\repo\org\apache\logging\log4j\log4j-api\2.3\log4j-api-2.3.jar;G:\niu\DEV\MAVEN\repo\org\apache\logging\log4j\log4j-core\2.3\log4j-core-2.3.jar;G:\niu\DEV\MAVEN\repo\junit\junit\4.10\junit-4.10.jar;G:\niu\DEV\MAVEN\repo\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;"/>
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="java.home" value="C:\Program Files\Java\jdk1.7.0_51\jre"/>
-    <property name="sun.java.command" value="F:\git\mongo-base\target\surefire\surefirebooter1718540564794193799.jar F:\git\mongo-base\target\surefire\surefire7351477637062567322tmp F:\git\mongo-base\target\surefire\surefire3163459012360911555tmp"/>
+    <property name="java.home" value="C:\Program Files\Java\jre7"/>
+    <property name="sun.java.command" value="G:\niu\DEV\PRJECT\git\mongo-base\target\surefire\surefirebooter8376901563327882102.jar G:\niu\DEV\PRJECT\git\mongo-base\target\surefire\surefire691966249549409616tmp G:\niu\DEV\PRJECT\git\mongo-base\target\surefire\surefire5406317788546581827tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="zh"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="1.7.0_51"/>
-    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.7.0_51\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
-    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.7.0_51\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_51\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_51\jre\classes"/>
+    <property name="java.version" value="1.7.0_80"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jre7\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jre7\lib\resources.jar;C:\Program Files\Java\jre7\lib\rt.jar;C:\Program Files\Java\jre7\lib\sunrsasign.jar;C:\Program Files\Java\jre7\lib\jsse.jar;C:\Program Files\Java\jre7\lib\jce.jar;C:\Program Files\Java\jre7\lib\charsets.jar;C:\Program Files\Java\jre7\lib\jfr.jar;C:\Program Files\Java\jre7\classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="localRepository" value="C:\Users\sks\.m2\repository"/>
+    <property name="localRepository" value="G:\niu\DEV\MAVEN\repo"/>
     <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -62,10 +62,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0.013" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateOneByIdStringDBObjectDBObjectClassOfT"/>
-  <testcase time="0.003" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateOneByConditionDBObjectDBObjectDBObjectBooleanString"/>
-  <testcase time="0.002" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateOneByIdStringDBObjectDBObjectString"/>
-  <testcase time="0.007" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateOneByConditionDBObjectDBObjectDBObjectBooleanClassOfT"/>
-  <testcase time="0.001" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateMultiByConditionClassOfTDBObjectDBObject"/>
-  <testcase time="0.002" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateMultiByConditionStringDBObjectDBObject"/>
+  <testcase time="0.071" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateOneByConditionDBObjectDBObjectDBObjectBooleanClassOfT"/>
+  <testcase time="0.003" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateOneByIdStringDBObjectDBObjectString"/>
+  <testcase time="0.003" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateOneByIdStringDBObjectDBObjectClassOfT"/>
+  <testcase time="0.003" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateMultiByConditionStringDBObjectDBObject"/>
+  <testcase time="0.005" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateOneByConditionDBObjectDBObjectDBObjectBooleanString"/>
+  <testcase time="0.002" classname="com.mou.mongodb.base.springmongo.TestUpdate" name="testUpdateMultiByConditionClassOfTDBObjectDBObject"/>
 </testsuite>
