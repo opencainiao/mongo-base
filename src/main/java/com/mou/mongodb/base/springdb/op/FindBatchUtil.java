@@ -59,7 +59,6 @@ public class FindBatchUtil {
 		}
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-
 		return op.find(query, entityClass);
 	}
 

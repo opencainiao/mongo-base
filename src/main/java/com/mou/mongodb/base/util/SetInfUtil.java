@@ -8,6 +8,7 @@ import com.mongodb.DBObject;
 
 public class SetInfUtil {
 
+	
 	public static void setReturnFields(Query query, DBObject returnFields) {
 		
 		Validator.checkReturnFields(returnFields);

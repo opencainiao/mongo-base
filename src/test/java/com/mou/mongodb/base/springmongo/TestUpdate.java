@@ -5,8 +5,8 @@ import org.junit.Test;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
-import com.mou.mongodb.base.Client;
 import com.mou.mongodb.base.springdb.op.UpdateUtil;
+import com.mou.mongodb.base.springmongo.domain.Client;
 
 public class TestUpdate {
 
