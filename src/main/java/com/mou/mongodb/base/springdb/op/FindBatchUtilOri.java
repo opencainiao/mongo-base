@@ -22,12 +22,6 @@ import com.mou.mongodb.base.util.EntityClassUtil;
  */
 public class FindBatchUtilOri {
 
-	/****
-	 * 查询全部
-	 * 
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<T> findAll(DBObject orderBy, Class<T> entityClass) {
 		List<T> result = new ArrayList<T>();
 
@@ -65,15 +59,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询全部
-	 * 
-	 * @param query
-	 * @param orderBy
-	 * @param entityClass
-	 * @param collectionNameIn
-	 * @return
-	 */
 	public static <T> List<T> findAll(DBObject orderBy, Class<T> entityClass, String collectionNameIn) {
 		List<T> result = new ArrayList<T>();
 
@@ -116,12 +101,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询全部
-	 * 
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<DBObject> findAllDBObject(DBObject orderBy, Class<T> entityClass) {
 		List<DBObject> result = new ArrayList<DBObject>();
 
@@ -158,15 +137,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询全部
-	 * 
-	 * @param query
-	 * @param orderBy
-	 * @param entityClass
-	 * @param collectionNameIn
-	 * @return
-	 */
 	public static <T> List<DBObject> findAllDBObject(DBObject orderBy, Class<T> entityClass, String collectionNameIn) {
 		List<DBObject> result = new ArrayList<DBObject>();
 
@@ -207,13 +177,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条
-	 * 
-	 * @param query
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<T> findBatch(Class<T> entityClass, DBObject query, DBObject orderBy) {
 
 		List<T> result = new ArrayList<T>();
@@ -252,13 +215,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条
-	 * 
-	 * @param query
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<T> findBatch(Class<T> entityClass, String collectionNameIn, DBObject query,
 			DBObject orderBy) {
 
@@ -302,13 +258,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条
-	 * 
-	 * @param query
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<DBObject> findBatchDBObject(DBObject query, DBObject orderBy, Class<T> entityClass) {
 
 		List<DBObject> result = new ArrayList<DBObject>();
@@ -346,13 +295,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条
-	 * 
-	 * @param query
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<DBObject> findBatchDBObject(DBObject query, DBObject orderBy, String collectionName) {
 
 		List<DBObject> result = new ArrayList<DBObject>();
@@ -389,15 +331,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param orderBy
-	 * @param returnFields
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<T> findBatchPart(Class<T> entityClass, DBObject query, DBObject orderBy,
 			DBObject returnFields) {
 
@@ -438,15 +371,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @param collectionName
-	 * @return
-	 */
 	public static <T> List<T> findBatchPart(Class<T> entityClass, String collectionNameIn, DBObject query,
 			DBObject orderBy, DBObject returnFields) {
 
@@ -490,14 +414,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<DBObject> findBatchPartDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
 			DBObject returnFields) {
 
@@ -537,14 +453,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @return
-	 */
 	public static List<DBObject> findBatchPartDBObject(String collectionName, DBObject query, DBObject orderBy,
 			DBObject returnFields) {
 
@@ -582,13 +490,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条
-	 * 
-	 * @param query
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<T> findBatchPage(Class<T> entityClass, DBObject query, DBObject orderBy, PageVO pageVO) {
 
 		List<T> result = new ArrayList<T>();
@@ -635,13 +536,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条
-	 * 
-	 * @param query
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<T> findBatchPage(Class<T> entityClass, String collectionNameIn, DBObject query,
 			DBObject orderBy, PageVO pageVO) {
 
@@ -692,14 +586,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<T> findBatchPartPage(Class<T> entityClass, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO) {
 
@@ -748,15 +634,6 @@ public class FindBatchUtilOri {
 
 	}
 
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @param collectionName
-	 * @return
-	 */
 	public static <T> List<T> findBatchPartPage(Class<T> entityClass, String collectionNameIn, DBObject query,
 			DBObject orderBy, DBObject returnFields, PageVO pageVO) {
 
@@ -807,13 +684,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条
-	 * 
-	 * @param query
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<DBObject> findBatchPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
 			PageVO pageVO) {
 
@@ -860,13 +730,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条
-	 * 
-	 * @param query
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<DBObject> findBatchPageDBObject(String collectionName, DBObject query, DBObject orderBy,
 			PageVO pageVO) {
 
@@ -911,14 +774,6 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @return
-	 */
 	public static <T> List<DBObject> findBatchPartPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO) {
 
@@ -966,15 +821,6 @@ public class FindBatchUtilOri {
 
 	}
 
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @param collectionName
-	 * @return
-	 */
 	public static <T> List<DBObject> findBatchPartPageDBObject(String collectionName, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO) {
 

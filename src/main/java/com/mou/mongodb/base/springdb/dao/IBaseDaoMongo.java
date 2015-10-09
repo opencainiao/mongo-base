@@ -163,8 +163,7 @@ public interface IBaseDaoMongo {
 	 * @param collectionName
 	 * @return
 	 */
-	public <T> T findOneById(String _id, Class<T> entityClass,
-			String collectionName);
+	public <T> T findOneById(String _id, Class<T> entityClass, String collectionName);
 
 	/****
 	 * 查询一个对象的一部分
@@ -174,8 +173,7 @@ public interface IBaseDaoMongo {
 	 * @param entityClass
 	 * @return
 	 */
-	public <T> T findOnePartById(String _id, DBObject returnFields,
-			Class<T> entityClass);
+	public <T> T findOnePartById(String _id, DBObject returnFields, Class<T> entityClass);
 
 	/****
 	 * 查询一个对象的一部分
@@ -186,8 +184,7 @@ public interface IBaseDaoMongo {
 	 * @param collectionName
 	 * @return
 	 */
-	public <T> T findOnePartById(String _id, DBObject returnFields,
-			Class<T> entityClass, String collectionName);
+	public <T> T findOnePartById(String _id, DBObject returnFields, Class<T> entityClass, String collectionName);
 
 	/****
 	 * 查询一个对象
@@ -206,8 +203,7 @@ public interface IBaseDaoMongo {
 	 * @param collectionName
 	 * @return
 	 */
-	public <T> T findOne(Query query, Class<T> entityClass,
-			String collectionName);
+	public <T> T findOne(Query query, Class<T> entityClass, String collectionName);
 
 	/****
 	 * 查询一个对象的一部分
@@ -217,8 +213,7 @@ public interface IBaseDaoMongo {
 	 * @param entityClass
 	 * @return
 	 */
-	public <T> T findOnePart(Query query, DBObject returnFields,
-			Class<T> entityClass);
+	public <T> T findOnePart(Query query, DBObject returnFields, Class<T> entityClass);
 
 	/****
 	 * 查询一个对象的一部分
@@ -229,8 +224,7 @@ public interface IBaseDaoMongo {
 	 * @param collectionName
 	 * @return
 	 */
-	public <T> T findOnePart(Query query, DBObject returnFields,
-			Class<T> entityClass, String collectionName);
+	public <T> T findOnePart(Query query, DBObject returnFields, Class<T> entityClass, String collectionName);
 
 	/****
 	 * 查询全部
@@ -265,31 +259,38 @@ public interface IBaseDaoMongo {
 	 * @param entityClass
 	 * @return
 	 */
-	public <T> List<T> findBatch(Query query, Class<T> entityClass, Sort sort,
+	public <T> List<T> findBatch(Query query, Class<T> entityClass, Sort sort, String collectionName);
+
+	/****
+	 * 查询多条对象的一部分
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> List<T> findBatchPart(Query query, DBObject returnFields, Sort sort, Class<T> entityClass);
+
+	/****
+	 * 查询多条对象的一部分
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param entityClass
+	 * @param collectionName
+	 * @return
+	 */
+	public <T> List<T> findBatchPart(Query query, DBObject returnFields, Sort sort, Class<T> entityClass,
 			String collectionName);
 
 	/****
-	 * 查询多条对象的一部分
+	 * 查询多条
 	 * 
 	 * @param query
-	 * @param returnFields
 	 * @param entityClass
 	 * @return
 	 */
-	public <T> List<T> findBatchPart(Query query, DBObject returnFields,
-			Sort sort, Class<T> entityClass);
-
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @param collectionName
-	 * @return
-	 */
-	public <T> List<T> findBatchPart(Query query, DBObject returnFields,
-			Sort sort, Class<T> entityClass, String collectionName);
+	public <T> List<T> findBatchPage(Query query, Class<T> entityClass, PageVO pageVO, Sort sort);
 
 	/****
 	 * 查询多条
@@ -298,44 +299,33 @@ public interface IBaseDaoMongo {
 	 * @param entityClass
 	 * @return
 	 */
-	public <T> List<T> findBatchPage(Query query, Class<T> entityClass,
-			PageVO pageVO, Sort sort);
-
-	/****
-	 * 查询多条
-	 * 
-	 * @param query
-	 * @param entityClass
-	 * @return
-	 */
-	public <T> List<T> findBatchPage(Query query, Class<T> entityClass,
-			String collectionName, PageVO pageVO, Sort sort);
-
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @return
-	 */
-	public <T> List<T> findBatchPartPage(Query query, DBObject returnFields,
-			Class<T> entityClass, PageVO pageVO, Sort sort);
-
-	/****
-	 * 查询多条对象的一部分
-	 * 
-	 * @param query
-	 * @param returnFields
-	 * @param entityClass
-	 * @param collectionName
-	 * @return
-	 */
-	public <T> List<T> findBatchPartPage(Query query, DBObject returnFields,
-			Class<T> entityClass, String collectionName, PageVO pageVO,
+	public <T> List<T> findBatchPage(Query query, Class<T> entityClass, String collectionName, PageVO pageVO,
 			Sort sort);
 
 	/****
+	 * 查询多条对象的一部分
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param entityClass
+	 * @return
+	 */
+	public <T> List<T> findBatchPartPage(Query query, DBObject returnFields, Class<T> entityClass, PageVO pageVO,
+			Sort sort);
+
+	/****
+	 * 查询多条对象的一部分
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param entityClass
+	 * @param collectionName
+	 * @return
+	 */
+	public <T> List<T> findBatchPartPage(Query query, DBObject returnFields, Class<T> entityClass,
+			String collectionName, PageVO pageVO, Sort sort);
+
+	/****
 	 * 根据主键，更新一条记录
 	 * 
 	 * @param _id
@@ -344,8 +334,7 @@ public interface IBaseDaoMongo {
 	 * @param entityClass
 	 * @return
 	 */
-	public <T> DBObject updateOneById(String _id, DBObject returnFields,
-			DBObject update, Class<T> entityClass);
+	public <T> DBObject updateOneById(String _id, DBObject returnFields, DBObject update, Class<T> entityClass);
 
 	/****
 	 * 根据主键，更新一条记录
@@ -356,8 +345,7 @@ public interface IBaseDaoMongo {
 	 * @param collectionName
 	 * @return
 	 */
-	public <T> DBObject updateOneById(String _id, DBObject returnFields,
-			DBObject update, String collectionName);
+	public <T> DBObject updateOneById(String _id, DBObject returnFields, DBObject update, String collectionName);
 
 	/****
 	 * 根据条件，更新一条记录
@@ -369,8 +357,7 @@ public interface IBaseDaoMongo {
 	 * @param entityClass
 	 * @return
 	 */
-	public <T> DBObject updateOneByCondition(DBObject query,
-			DBObject returnFields, DBObject update, boolean upsert,
+	public <T> DBObject updateOneByCondition(DBObject query, DBObject returnFields, DBObject update, boolean upsert,
 			Class<T> entityClass);
 
 	/****
@@ -383,8 +370,7 @@ public interface IBaseDaoMongo {
 	 * @param collectionName
 	 * @return
 	 */
-	public <T> DBObject updateOneByCondition(DBObject query,
-			DBObject returnFields, DBObject update, boolean upsert,
+	public <T> DBObject updateOneByCondition(DBObject query, DBObject returnFields, DBObject update, boolean upsert,
 			String collectionName);
 
 	/****
@@ -395,8 +381,7 @@ public interface IBaseDaoMongo {
 	 * @param update
 	 * @return
 	 */
-	public <T> WriteResult updateMultiByCondition(Class<T> entityClass,
-			final DBObject query, final DBObject update);
+	public <T> WriteResult updateMultiByCondition(Class<T> entityClass, final DBObject query, final DBObject update);
 
 	/****
 	 * 根据条件更新数据，如果有多条，则全部更新
@@ -406,6 +391,55 @@ public interface IBaseDaoMongo {
 	 * @param update
 	 * @return
 	 */
-	public <T> WriteResult updateMultiByCondition(String collectionName,
-			final DBObject query, final DBObject update);
+	public <T> WriteResult updateMultiByCondition(String collectionName, final DBObject query, final DBObject update);
+
+	public <T> List<T> findAll(DBObject orderBy, Class<T> entityClass);
+
+	public <T> List<T> findAll(DBObject orderBy, Class<T> entityClass, String collectionNameIn);
+
+	public <T> List<DBObject> findAllDBObject(DBObject orderBy, Class<T> entityClass);
+
+	public <T> List<DBObject> findAllDBObject(DBObject orderBy, Class<T> entityClass, String collectionNameIn);
+
+	public <T> List<T> findBatch(Class<T> entityClass, DBObject query, DBObject orderBy);
+
+	public <T> List<T> findBatch(Class<T> entityClass, String collectionNameIn, DBObject query, DBObject orderBy);
+
+	public <T> List<DBObject> findBatchDBObject(DBObject query, DBObject orderBy, Class<T> entityClass);
+
+	public <T> List<DBObject> findBatchDBObject(DBObject query, DBObject orderBy, String collectionName);
+
+	public <T> List<T> findBatchPart(Class<T> entityClass, DBObject query, DBObject orderBy, DBObject returnFields);
+
+	public <T> List<T> findBatchPart(Class<T> entityClass, String collectionNameIn, DBObject query, DBObject orderBy,
+			DBObject returnFields);
+
+	public <T> List<DBObject> findBatchPartDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
+			DBObject returnFields);
+
+	public List<DBObject> findBatchPartDBObject(String collectionName, DBObject query, DBObject orderBy,
+			DBObject returnFields);
+
+	public <T> List<T> findBatchPage(Class<T> entityClass, DBObject query, DBObject orderBy, PageVO pageVO);
+
+	public <T> List<T> findBatchPage(Class<T> entityClass, String collectionNameIn, DBObject query, DBObject orderBy,
+			PageVO pageVO);
+
+	public <T> List<T> findBatchPartPage(Class<T> entityClass, DBObject query, DBObject orderBy, DBObject returnFields,
+			PageVO pageVO);
+
+	public <T> List<T> findBatchPartPage(Class<T> entityClass, String collectionNameIn, DBObject query,
+			DBObject orderBy, DBObject returnFields, PageVO pageVO);
+
+	public <T> List<DBObject> findBatchPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
+			PageVO pageVO);
+
+	public <T> List<DBObject> findBatchPageDBObject(String collectionName, DBObject query, DBObject orderBy,
+			PageVO pageVO);
+
+	public <T> List<DBObject> findBatchPartPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
+			DBObject returnFields, PageVO pageVO);
+
+	public <T> List<DBObject> findBatchPartPageDBObject(String collectionName, DBObject query, DBObject orderBy,
+			DBObject returnFields, PageVO pageVO);
 }
