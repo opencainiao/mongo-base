@@ -1,7 +1,5 @@
 package com.mou.mongodb.base.springmongo;
 
-import static org.junit.Assert.fail;
-
 import java.util.List;
 
 import org.junit.Test;
@@ -10,6 +8,7 @@ import org.mou.common.JsonUtil;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mou.mongodb.base.Address;
+import com.mou.mongodb.base.domain.PageVO;
 import com.mou.mongodb.base.springdb.op.FindBatchUtilOri;
 import com.mou.mongodb.base.springmongo.domain.Client;
 
@@ -230,13 +229,13 @@ public class FindBatchUtilOriTest {
 	}
 
 	@Test
-	public void testFindBatchDBObjectDBObjectDBObjectClassOfT() {
+	public void testfindBatch2() {
 		DBObject query = new BasicDBObject();
 		query.put("province", 1);
 
 		DBObject orderBy = new BasicDBObject();
 		orderBy.put("city", 1);
-		List<Address> addresses = FindBatchUtilOri.findBatch(query, orderBy, Address.class);
+		List<Address> addresses = FindBatchUtilOri.findBatch(Address.class, query, orderBy);
 
 		System.out.println("条数：" + addresses.size());
 		for (Address address : addresses) {
@@ -246,14 +245,14 @@ public class FindBatchUtilOriTest {
 	}
 
 	@Test
-	public void testFindBatchDBObjectDBObjectDBObjectString() {
+	public void testfindBatch() {
 
 		DBObject query = new BasicDBObject();
 		query.put("province", 1);
 
 		DBObject orderBy = new BasicDBObject();
 		orderBy.put("city", 1);
-		List<Address> addresses = FindBatchUtilOri.findBatch(query, orderBy, Address.class, "aa");
+		List<Address> addresses = FindBatchUtilOri.findBatch(Address.class, "aa", query, orderBy);
 
 		System.out.println("条数：" + addresses.size());
 		for (Address address : addresses) {
@@ -261,7 +260,7 @@ public class FindBatchUtilOriTest {
 			System.out.println(address);
 		}
 
-		addresses = FindBatchUtilOri.findBatch(query, orderBy, Address.class, "address");
+		addresses = FindBatchUtilOri.findBatch(Address.class, "address", query, orderBy);
 
 		System.out.println("条数：" + addresses.size());
 		for (Address address : addresses) {
@@ -283,7 +282,7 @@ public class FindBatchUtilOriTest {
 		returnFields.put("city", 1);
 		returnFields.put("province", 1);
 
-		List<DBObject> addresses = FindBatchUtilOri.findBatchPartDBObject(query, orderBy, returnFields, Address.class);
+		List<DBObject> addresses = FindBatchUtilOri.findBatchPartDBObject(Address.class, query, orderBy, returnFields);
 
 		try {
 			System.out.println("条数" + addresses.size());
@@ -298,7 +297,7 @@ public class FindBatchUtilOriTest {
 	}
 
 	@Test
-	public void testFindBatchPartDBObjectDBObjectDBObjectClassOfTString() {
+	public void testfindBatchPartDBObject() {
 
 		DBObject query = new BasicDBObject();
 		query.put("province", 1);
@@ -310,7 +309,7 @@ public class FindBatchUtilOriTest {
 		returnFields.put("city", 1);
 		returnFields.put("province", 1);
 
-		List<DBObject> addresses = FindBatchUtilOri.findBatchPartDBObject(query, orderBy, returnFields, "aa");
+		List<DBObject> addresses = FindBatchUtilOri.findBatchPartDBObject("aa", query, orderBy, returnFields);
 
 		try {
 			System.out.println("条数" + addresses.size());
@@ -320,7 +319,7 @@ public class FindBatchUtilOriTest {
 						+ address.get("city").toString() + "----");
 			}
 
-			addresses = FindBatchUtilOri.findBatchPartDBObject(query, orderBy, returnFields, "address");
+			addresses = FindBatchUtilOri.findBatchPartDBObject("address", query, orderBy, returnFields);
 
 			try {
 				System.out.println("条数" + addresses.size());
@@ -338,7 +337,7 @@ public class FindBatchUtilOriTest {
 	}
 
 	@Test
-	public void testFindBatchPartDBObjectDBObjectDBObjectDBObjectClassOfT() {
+	public void testfindBatchPart2() {
 
 		DBObject query = new BasicDBObject();
 		query.put("province", 1);
@@ -350,7 +349,7 @@ public class FindBatchUtilOriTest {
 		returnFields.put("city", 1);
 		returnFields.put("province", 1);
 
-		List<Address> addresses = FindBatchUtilOri.findBatchPart(query, orderBy, returnFields, Address.class);
+		List<Address> addresses = FindBatchUtilOri.findBatchPart(Address.class, query, orderBy, returnFields);
 
 		try {
 			System.out.println("条数" + addresses.size());
@@ -361,7 +360,7 @@ public class FindBatchUtilOriTest {
 			}
 
 			System.out.println("-------------------------------------");
-			addresses = FindBatchUtilOri.findBatchPart(query, orderBy, null, Address.class);
+			addresses = FindBatchUtilOri.findBatchPart(Address.class, query, orderBy, null);
 			System.out.println("条数" + addresses.size());
 			for (Address address : addresses) {
 				System.out.println(address);
@@ -375,7 +374,7 @@ public class FindBatchUtilOriTest {
 	}
 
 	@Test
-	public void testFindBatchPartDBObjectDBObjectDBObjectDBObjectString() {
+	public void testfindBatchPart() {
 		DBObject query = new BasicDBObject();
 		query.put("province", 1);
 
@@ -386,7 +385,7 @@ public class FindBatchUtilOriTest {
 		returnFields.put("city", 1);
 		returnFields.put("province", 1);
 
-		List<Address> addresses = FindBatchUtilOri.findBatchPart(query, orderBy, returnFields, Address.class, "aa");
+		List<Address> addresses = FindBatchUtilOri.findBatchPart(Address.class, "aa", query, orderBy, returnFields);
 
 		try {
 			System.out.println("条数" + addresses.size());
@@ -396,7 +395,7 @@ public class FindBatchUtilOriTest {
 						address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
 			}
 
-			addresses = FindBatchUtilOri.findBatchPart(query, orderBy, returnFields, Address.class, "address");
+			addresses = FindBatchUtilOri.findBatchPart(Address.class, "address", query, orderBy, returnFields);
 
 			System.out.println("条数" + addresses.size());
 			for (Address address : addresses) {
@@ -406,7 +405,7 @@ public class FindBatchUtilOriTest {
 			}
 
 			System.out.println("-------------------------------------");
-			addresses = FindBatchUtilOri.findBatchPart(query, orderBy, null, Address.class, "address");
+			addresses = FindBatchUtilOri.findBatchPart(Address.class, "address", query, orderBy, null);
 			System.out.println("条数" + addresses.size());
 			for (Address address : addresses) {
 				System.out.println(address);
@@ -420,33 +419,476 @@ public class FindBatchUtilOriTest {
 	}
 
 	@Test
-	public void testFindBatchPageDBObjectDBObjectPageVOClassOfT() {
-		fail("Not yet implemented");
+	public void testfindBatchPage2() {
+
+		DBObject query = new BasicDBObject();
+		query.put("province", 1);
+
+		DBObject orderBy = new BasicDBObject();
+		orderBy.put("city", 1);
+
+		PageVO pageVO = new PageVO();
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(2);
+
+		List<Address> addresses = FindBatchUtilOri.findBatchPage(Address.class, query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(2);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPage(Address.class, query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(3);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPage(Address.class, query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(20);
+
+		addresses = FindBatchUtilOri.findBatchPage(Address.class, query, orderBy, pageVO);
+
+		System.out.println("全部满足条件条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
 	}
 
 	@Test
-	public void testFindBatchPageDBObjectDBObjectPageVOClassOfTString() {
-		fail("Not yet implemented");
+	public void testfindBatchPage() {
+
+		DBObject query = new BasicDBObject();
+		query.put("province", 1);
+
+		DBObject orderBy = new BasicDBObject();
+		orderBy.put("city", 1);
+
+		PageVO pageVO = new PageVO();
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(2);
+
+		List<Address> addresses = FindBatchUtilOri.findBatchPage(Address.class, "aa", query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(2);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPage(Address.class, "address", query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(3);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPage(Address.class, "address", query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(20);
+
+		addresses = FindBatchUtilOri.findBatchPage(Address.class, "address", query, orderBy, pageVO);
+
+		System.out.println("全部满足条件条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
 	}
 
 	@Test
-	public void testFindBatchPartPageDBObjectDBObjectDBObjectClassOfTPageVO() {
-		fail("Not yet implemented");
+	public void testfindBatchPageDBObject2() {
+
+		DBObject query = new BasicDBObject();
+		query.put("province", 1);
+
+		DBObject orderBy = new BasicDBObject();
+		orderBy.put("city", 1);
+
+		PageVO pageVO = new PageVO();
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(2);
+
+		List<DBObject> addresses = FindBatchUtilOri.findBatchPageDBObject(Address.class, query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(2);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPageDBObject(Address.class, query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(3);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPageDBObject(Address.class, query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(20);
+
+		addresses = FindBatchUtilOri.findBatchPageDBObject(Address.class, query, orderBy, pageVO);
+
+		System.out.println("全部满足条件条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
 	}
 
 	@Test
-	public void testFindBatchPartPageDBObjectDBObjectDBObjectClassOfTStringPageVO() {
-		fail("Not yet implemented");
+	public void testfindBatchPageDBObject() {
+		DBObject query = new BasicDBObject();
+		query.put("province", 1);
+
+		DBObject orderBy = new BasicDBObject();
+		orderBy.put("city", 1);
+
+		PageVO pageVO = new PageVO();
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(2);
+
+		List<DBObject> addresses = FindBatchUtilOri.findBatchPageDBObject("aa", query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(2);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPageDBObject("address", query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(3);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPageDBObject("address", query, orderBy, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(20);
+
+		addresses = FindBatchUtilOri.findBatchPageDBObject("address", query, orderBy, pageVO);
+
+		System.out.println("全部满足条件条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
 	}
 
 	@Test
-	public void testFindBatchPageDBObjectDBObjectDBObjectPageVOClassOfT() {
-		fail("Not yet implemented");
+	public void testfindBatchPartPage2() {
+
+		DBObject query = new BasicDBObject();
+		query.put("province", 1);
+
+		DBObject orderBy = new BasicDBObject();
+		orderBy.put("city", 1);
+
+		DBObject returnFields = new BasicDBObject();
+		returnFields.put("city", 1);
+		returnFields.put("province", 1);
+
+		PageVO pageVO = new PageVO();
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(2);
+
+		List<Address> addresses = FindBatchUtilOri.findBatchPartPage(Address.class, query, orderBy, returnFields,
+				pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(2);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPartPage(Address.class, query, orderBy, returnFields, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(3);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPartPage(Address.class, query, orderBy, returnFields, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(20);
+
+		addresses = FindBatchUtilOri.findBatchPartPage(Address.class, query, orderBy, returnFields, pageVO);
+
+		System.out.println("全部满足条件条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
 	}
 
 	@Test
-	public void testFindBatchPageDBObjectDBObjectDBObjectPageVOString() {
-		fail("Not yet implemented");
+	public void testfindBatchPartPage() {
+		DBObject query = new BasicDBObject();
+		query.put("province", 1);
+
+		DBObject orderBy = new BasicDBObject();
+		orderBy.put("city", 1);
+
+		DBObject returnFields = new BasicDBObject();
+		returnFields.put("city", 1);
+		returnFields.put("province", 1);
+
+		PageVO pageVO = new PageVO();
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(2);
+
+		List<Address> addresses = FindBatchUtilOri.findBatchPartPage(Address.class, "aa", query, orderBy, returnFields,
+				pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(2);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPartPage(Address.class, "address", query, orderBy, returnFields, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(3);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPartPage(Address.class, "address", query, orderBy, returnFields, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(20);
+
+		addresses = FindBatchUtilOri.findBatchPartPage(Address.class, "address", query, orderBy, returnFields, pageVO);
+
+		System.out.println("全部满足条件条数：" + addresses.size());
+		for (Address address : addresses) {
+			System.out.print(address.get_id_m() + "----" + address.getProvince() + "----" + address.getCity() + "----");
+			System.out.println(address);
+		}
+
 	}
 
+	// public static <T> List<DBObject> (DBObject query, DBObject orderBy,
+	// DBObject returnFields,
+	@Test
+	public void testfindBatchPartPageDBObject() {
+		DBObject query = new BasicDBObject();
+		query.put("province", 1);
+
+		DBObject orderBy = new BasicDBObject();
+		orderBy.put("city", 1);
+
+		DBObject returnFields = new BasicDBObject();
+		returnFields.put("city", 1);
+		returnFields.put("province", 1);
+
+		PageVO pageVO = new PageVO();
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(2);
+
+		List<DBObject> addresses = FindBatchUtilOri.findBatchPartPageDBObject("aa", query, orderBy, returnFields,
+				pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(2);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPartPageDBObject("address", query, orderBy, returnFields, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(3);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPartPageDBObject("address", query, orderBy, returnFields, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(20);
+
+		addresses = FindBatchUtilOri.findBatchPartPageDBObject("address", query, orderBy, returnFields, pageVO);
+
+		System.out.println("全部满足条件条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+	}
+
+	@Test
+	public void testfindBatchPartPageDBObject2() {
+		DBObject query = new BasicDBObject();
+		query.put("province", 1);
+
+		DBObject orderBy = new BasicDBObject();
+		orderBy.put("city", 1);
+
+		DBObject returnFields = new BasicDBObject();
+		returnFields.put("city", 1);
+		returnFields.put("province", 1);
+
+		PageVO pageVO = new PageVO();
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(2);
+
+		List<DBObject> addresses = FindBatchUtilOri.findBatchPartPageDBObject(Address.class, query, orderBy,
+				returnFields, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(2);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPartPageDBObject(Address.class, query, orderBy, returnFields, pageVO);
+
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(3);
+		pageVO.setPageCount(2);
+
+		addresses = FindBatchUtilOri.findBatchPartPageDBObject(Address.class, query, orderBy, returnFields, pageVO);
+		System.out.println("条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+
+		pageVO.setCurPageNum(1);
+		pageVO.setPageCount(20);
+
+		addresses = FindBatchUtilOri.findBatchPartPageDBObject(Address.class, query, orderBy, returnFields, pageVO);
+		System.out.println("全部满足条件条数：" + addresses.size());
+		for (DBObject address : addresses) {
+			System.out.println(address);
+			System.out.println(address.get("_id").toString() + "----" + address.get("province").toString() + "----"
+					+ address.get("city").toString() + "----");
+		}
+	}
 }

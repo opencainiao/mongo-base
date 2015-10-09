@@ -214,7 +214,7 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> List<T> findBatch(DBObject query, DBObject orderBy, Class<T> entityClass) {
+	public static <T> List<T> findBatch(Class<T> entityClass, DBObject query, DBObject orderBy) {
 
 		List<T> result = new ArrayList<T>();
 
@@ -259,8 +259,8 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> List<T> findBatch(DBObject query, DBObject orderBy, Class<T> entityClass,
-			String collectionNameIn) {
+	public static <T> List<T> findBatch(Class<T> entityClass, String collectionNameIn, DBObject query,
+			DBObject orderBy) {
 
 		List<T> result = new ArrayList<T>();
 
@@ -398,8 +398,8 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> List<T> findBatchPart(DBObject query, DBObject orderBy, DBObject returnFields,
-			Class<T> entityClass) {
+	public static <T> List<T> findBatchPart(Class<T> entityClass, DBObject query, DBObject orderBy,
+			DBObject returnFields) {
 
 		List<T> result = new ArrayList<T>();
 
@@ -447,8 +447,8 @@ public class FindBatchUtilOri {
 	 * @param collectionName
 	 * @return
 	 */
-	public static <T> List<T> findBatchPart(DBObject query, DBObject orderBy, DBObject returnFields,
-			Class<T> entityClass, String collectionNameIn) {
+	public static <T> List<T> findBatchPart(Class<T> entityClass, String collectionNameIn, DBObject query,
+			DBObject orderBy, DBObject returnFields) {
 
 		List<T> result = new ArrayList<T>();
 
@@ -498,8 +498,8 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> List<DBObject> findBatchPartDBObject(DBObject query, DBObject orderBy, DBObject returnFields,
-			Class<T> entityClass) {
+	public static <T> List<DBObject> findBatchPartDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
+			DBObject returnFields) {
 
 		List<DBObject> result = new ArrayList<DBObject>();
 
@@ -545,8 +545,8 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static List<DBObject> findBatchPartDBObject(DBObject query, DBObject orderBy, DBObject returnFields,
-			String collectionName) {
+	public static List<DBObject> findBatchPartDBObject(String collectionName, DBObject query, DBObject orderBy,
+			DBObject returnFields) {
 
 		List<DBObject> result = new ArrayList<DBObject>();
 
@@ -589,7 +589,7 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> List<T> findBatchPage(DBObject query, DBObject orderBy, PageVO pageVO, Class<T> entityClass) {
+	public static <T> List<T> findBatchPage(Class<T> entityClass, DBObject query, DBObject orderBy, PageVO pageVO) {
 
 		List<T> result = new ArrayList<T>();
 
@@ -614,9 +614,9 @@ public class FindBatchUtilOri {
 		try {
 
 			if (orderBy != null) {
-				cursor = coll.find(query, null).sort(orderBy).skip(skip).batchSize(limit);
+				cursor = coll.find(query, null).sort(orderBy).skip(skip).limit(limit);
 			} else {
-				cursor = coll.find(query, null).skip(skip).batchSize(limit);
+				cursor = coll.find(query, null).skip(skip).limit(limit);
 			}
 
 			MongoConverter converter = op.getConverter();
@@ -642,8 +642,8 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> List<T> findBatchPage(DBObject query, DBObject orderBy, PageVO pageVO, Class<T> entityClass,
-			String collectionNameIn) {
+	public static <T> List<T> findBatchPage(Class<T> entityClass, String collectionNameIn, DBObject query,
+			DBObject orderBy, PageVO pageVO) {
 
 		List<T> result = new ArrayList<T>();
 
@@ -671,9 +671,9 @@ public class FindBatchUtilOri {
 		try {
 
 			if (orderBy != null) {
-				cursor = coll.find(query, null).sort(orderBy).skip(skip).batchSize(limit);
+				cursor = coll.find(query, null).sort(orderBy).skip(skip).limit(limit);
 			} else {
-				cursor = coll.find(query, null).skip(skip).batchSize(limit);
+				cursor = coll.find(query, null).skip(skip).limit(limit);
 			}
 
 			MongoConverter converter = op.getConverter();
@@ -700,8 +700,8 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> List<T> findBatchPartPage(DBObject query, DBObject orderBy, DBObject returnFields,
-			Class<T> entityClass, PageVO pageVO) {
+	public static <T> List<T> findBatchPartPage(Class<T> entityClass, DBObject query, DBObject orderBy,
+			DBObject returnFields, PageVO pageVO) {
 
 		List<T> result = new ArrayList<T>();
 
@@ -726,9 +726,9 @@ public class FindBatchUtilOri {
 		try {
 
 			if (orderBy != null) {
-				cursor = coll.find(query, returnFields).sort(orderBy).skip(skip).batchSize(limit);
+				cursor = coll.find(query, returnFields).sort(orderBy).skip(skip).limit(limit);
 			} else {
-				cursor = coll.find(query, returnFields).skip(skip).batchSize(limit);
+				cursor = coll.find(query, returnFields).skip(skip).limit(limit);
 			}
 
 			MongoConverter converter = op.getConverter();
@@ -757,8 +757,8 @@ public class FindBatchUtilOri {
 	 * @param collectionName
 	 * @return
 	 */
-	public static <T> List<T> findBatchPartPage(DBObject query, DBObject orderBy, DBObject returnFields,
-			Class<T> entityClass, String collectionNameIn, PageVO pageVO) {
+	public static <T> List<T> findBatchPartPage(Class<T> entityClass, String collectionNameIn, DBObject query,
+			DBObject orderBy, DBObject returnFields, PageVO pageVO) {
 
 		List<T> result = new ArrayList<T>();
 
@@ -786,9 +786,9 @@ public class FindBatchUtilOri {
 		try {
 
 			if (orderBy != null) {
-				cursor = coll.find(query, null).sort(orderBy).skip(skip).batchSize(limit);
+				cursor = coll.find(query, returnFields).sort(orderBy).skip(skip).limit(limit);
 			} else {
-				cursor = coll.find(query, null).skip(skip).batchSize(limit);
+				cursor = coll.find(query, returnFields).skip(skip).limit(limit);
 			}
 
 			MongoConverter converter = op.getConverter();
@@ -814,8 +814,8 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> List<DBObject> findBatchPageDBObject(DBObject query, DBObject orderBy, PageVO pageVO,
-			Class<T> entityClass) {
+	public static <T> List<DBObject> findBatchPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
+			PageVO pageVO) {
 
 		List<DBObject> result = new ArrayList<DBObject>();
 
@@ -840,9 +840,9 @@ public class FindBatchUtilOri {
 		try {
 
 			if (orderBy != null) {
-				cursor = coll.find(query, null).sort(orderBy).skip(skip).batchSize(limit);
+				cursor = coll.find(query, null).sort(orderBy).skip(skip).limit(limit);
 			} else {
-				cursor = coll.find(query, null).skip(skip).batchSize(limit);
+				cursor = coll.find(query, null).skip(skip).limit(limit);
 			}
 
 			while (cursor.hasNext()) {
@@ -867,8 +867,8 @@ public class FindBatchUtilOri {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> List<DBObject> findBatchPageDBObject(DBObject query, DBObject orderBy, PageVO pageVO,
-			String collectionName) {
+	public static <T> List<DBObject> findBatchPageDBObject(String collectionName, DBObject query, DBObject orderBy,
+			PageVO pageVO) {
 
 		List<DBObject> result = new ArrayList<DBObject>();
 
@@ -891,9 +891,117 @@ public class FindBatchUtilOri {
 		try {
 
 			if (orderBy != null) {
-				cursor = coll.find(query, null).sort(orderBy).skip(skip).batchSize(limit);
+				cursor = coll.find(query, null).sort(orderBy).skip(skip).limit(limit);
 			} else {
-				cursor = coll.find(query, null).skip(skip).batchSize(limit);
+				cursor = coll.find(query, null).skip(skip).limit(limit);
+			}
+
+			while (cursor.hasNext()) {
+				DBObject object = cursor.next();
+
+				result.add(object);
+			}
+		} finally {
+
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+
+		return result;
+	}
+
+	/****
+	 * 查询多条对象的一部分
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param entityClass
+	 * @return
+	 */
+	public static <T> List<DBObject> findBatchPartPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
+			DBObject returnFields, PageVO pageVO) {
+
+		List<DBObject> result = new ArrayList<DBObject>();
+
+		String collectionName = EntityClassUtil.getCollectionName(entityClass);
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return result;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		int limit = 10;// 默认查十条
+		int skip = 0;
+		if (pageVO != null) {
+			limit = pageVO.getPageCount();
+			skip = pageVO.getStartOffset();
+		}
+
+		DBCursor cursor = null;
+
+		try {
+
+			if (orderBy != null) {
+				cursor = coll.find(query, returnFields).sort(orderBy).skip(skip).limit(limit);
+			} else {
+				cursor = coll.find(query, returnFields).skip(skip).limit(limit);
+			}
+
+			while (cursor.hasNext()) {
+				DBObject object = cursor.next();
+
+				result.add(object);
+			}
+		} finally {
+
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+
+		return result;
+
+	}
+
+	/****
+	 * 查询多条对象的一部分
+	 * 
+	 * @param query
+	 * @param returnFields
+	 * @param entityClass
+	 * @param collectionName
+	 * @return
+	 */
+	public static <T> List<DBObject> findBatchPartPageDBObject(String collectionName, DBObject query, DBObject orderBy,
+			DBObject returnFields, PageVO pageVO) {
+
+		List<DBObject> result = new ArrayList<DBObject>();
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return result;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		int limit = 10;// 默认查十条
+		int skip = 0;
+		if (pageVO != null) {
+			limit = pageVO.getPageCount();
+			skip = pageVO.getStartOffset();
+		}
+
+		DBCursor cursor = null;
+
+		try {
+
+			if (orderBy != null) {
+				cursor = coll.find(query, returnFields).sort(orderBy).skip(skip).limit(limit);
+			} else {
+				cursor = coll.find(query, returnFields).skip(skip).limit(limit);
 			}
 
 			while (cursor.hasNext()) {
