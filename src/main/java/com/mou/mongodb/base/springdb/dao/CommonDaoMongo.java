@@ -342,4 +342,14 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 
 		return FindOneUtil.findOnePartDBObject(entityClass, query, returnFields);
 	}
+
+	public <T> boolean isExist(DBObject query, Class<T> entityClass) {
+
+		return FindOneUtil.isExist(query, entityClass);
+	}
+
+	public <T> boolean isExist(DBObject query, Class<T> entityClass, String collectionNameIn) {
+
+		return FindOneUtil.isExist(query, entityClass, collectionNameIn);
+	}
 }

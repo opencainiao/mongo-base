@@ -21,6 +21,41 @@ import com.mou.mongodb.base.util.SetInfUtil;
  */
 public class FindOneUtil {
 
+	public static <T> boolean isExist(DBObject query, Class<T> entityClass) {
+
+		String collectionName = EntityClassUtil.getCollectionName(entityClass);
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return false;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		int count = coll.find(query).count();
+
+		return count == 0 ? false : true;
+	}
+
+	public static <T> boolean isExist(DBObject query, Class<T> entityClass, String collectionNameIn) {
+
+		String collectionName = collectionNameIn;
+		if (collectionName == null) {
+			collectionName = EntityClassUtil.getCollectionName(entityClass);
+		}
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return false;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		int count = coll.find(query).count();
+
+		return count == 0 ? false : true;
+	}
+
 	/****
 	 * 查询一个对象
 	 * 

@@ -485,4 +485,8 @@ public interface IBaseDaoMongo {
 	 * @return
 	 */
 	public <T> DBObject findOnePartDBObject(Class<T> entityClass, DBObject query, DBObject returnFields);
+
+	public <T> boolean isExist(DBObject query, Class<T> entityClass);
+
+	public <T> boolean isExist(DBObject query, Class<T> entityClass, String collectionNameIn);
 }
