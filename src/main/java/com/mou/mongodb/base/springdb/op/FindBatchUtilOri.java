@@ -586,7 +586,7 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	public static <T> List<T> findBatchPartPage(Class<T> entityClass, DBObject query, DBObject orderBy,
+	public static <T> List<T> findBatchPagePart(Class<T> entityClass, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO) {
 
 		List<T> result = new ArrayList<T>();
@@ -634,7 +634,7 @@ public class FindBatchUtilOri {
 
 	}
 
-	public static <T> List<T> findBatchPartPage(Class<T> entityClass, String collectionNameIn, DBObject query,
+	public static <T> List<T> findBatchPagePart(Class<T> entityClass, String collectionNameIn, DBObject query,
 			DBObject orderBy, DBObject returnFields, PageVO pageVO) {
 
 		List<T> result = new ArrayList<T>();
@@ -774,7 +774,7 @@ public class FindBatchUtilOri {
 		return result;
 	}
 
-	public static <T> List<DBObject> findBatchPartPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
+	public static <T> List<DBObject> findBatchPagePartDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO) {
 
 		List<DBObject> result = new ArrayList<DBObject>();
@@ -821,7 +821,7 @@ public class FindBatchUtilOri {
 
 	}
 
-	public static <T> List<DBObject> findBatchPartPageDBObject(String collectionName, DBObject query, DBObject orderBy,
+	public static <T> List<DBObject> findBatchPagePartDBObject(String collectionName, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO) {
 
 		List<DBObject> result = new ArrayList<DBObject>();

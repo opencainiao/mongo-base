@@ -7,18 +7,18 @@ import org.mou.common.JsonUtil;
 @SuppressWarnings("rawtypes")
 public class PageVO {
 
-	private int curPageNum; // 当前页
+	private int page; // 当前页
 	private int pageCount; // 每页数据条数
 
 	private int startOffset; // 开始条数
-	private int totalNum; // 所有数据条数
+	private int total; // 所有数据条数
 	private int totalPage; // 所有页数
 
 	private List rows; // 所有查询结果
 	private boolean needCalTotal; // 是否需要计算总数据
 
 	public PageVO() {
-		curPageNum = 0;
+		page = 1;
 		pageCount = 10;
 		needCalTotal = false;
 		pageCount = Integer.MAX_VALUE;
@@ -28,20 +28,13 @@ public class PageVO {
 	 * 根据总数，计算共有多少页
 	 */
 	public void calMaxPage() {
-		totalPage = totalNum / pageCount;
+		totalPage = total / pageCount;
 
-		if (totalNum % pageCount != 0) {
+		if (total % pageCount != 0) {
 			totalPage += 1;
 		}
 	}
 
-	public int getCurPageNum() {
-		return curPageNum;
-	}
-
-	public void setCurPageNum(int curPageNum) {
-		this.curPageNum = curPageNum;
-	}
 
 	public int getPageCount() {
 		return pageCount;
@@ -53,24 +46,16 @@ public class PageVO {
 
 	public int getStartOffset() {
 
-		if (curPageNum == 0) {
-			curPageNum = 1;
+		if (page == 0) {
+			page = 1;
 		}
-		startOffset = (curPageNum - 1) * pageCount;
+		startOffset = (page - 1) * pageCount;
 
 		return startOffset;
 	}
 
 	public void setStartOffset(int startOffset) {
 		this.startOffset = startOffset;
-	}
-
-	public int getTotalNum() {
-		return totalNum;
-	}
-
-	public void setTotalNum(int totalNum) {
-		this.totalNum = totalNum;
 	}
 
 	public int getTotalPage() {
@@ -98,7 +83,24 @@ public class PageVO {
 	}
 
 	public String toString() {
-
-		return JsonUtil.getPrettyJsonStr(this);
+		return JsonUtil.toJsonStr(this);
 	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	
+	
 }

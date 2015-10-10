@@ -252,16 +252,16 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 		return FindBatchUtilOri.findBatchPage(entityClass, collectionNameIn, query, orderBy, pageVO);
 	}
 
-	public <T> List<T> findBatchPartPage(Class<T> entityClass, DBObject query, DBObject orderBy, DBObject returnFields,
+	public <T> List<T> findBatchPagePart(Class<T> entityClass, DBObject query, DBObject orderBy, DBObject returnFields,
 			PageVO pageVO) {
 
-		return FindBatchUtilOri.findBatchPartPage(entityClass, query, orderBy, returnFields, pageVO);
+		return FindBatchUtilOri.findBatchPagePart(entityClass, query, orderBy, returnFields, pageVO);
 	}
 
-	public <T> List<T> findBatchPartPage(Class<T> entityClass, String collectionNameIn, DBObject query,
+	public <T> List<T> findBatchPagePart(Class<T> entityClass, String collectionNameIn, DBObject query,
 			DBObject orderBy, DBObject returnFields, PageVO pageVO) {
 
-		return FindBatchUtilOri.findBatchPartPage(entityClass, collectionNameIn, query, orderBy, returnFields, pageVO);
+		return FindBatchUtilOri.findBatchPagePart(entityClass, collectionNameIn, query, orderBy, returnFields, pageVO);
 	}
 
 	public <T> List<DBObject> findBatchPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
@@ -276,15 +276,15 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 		return FindBatchUtilOri.findBatchPageDBObject(collectionName, query, orderBy, pageVO);
 	}
 
-	public <T> List<DBObject> findBatchPartPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
+	public <T> List<DBObject> findBatchPagePartDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO) {
 
-		return FindBatchUtilOri.findBatchPartPageDBObject(entityClass, query, orderBy, returnFields, pageVO);
+		return FindBatchUtilOri.findBatchPagePartDBObject(entityClass, query, orderBy, returnFields, pageVO);
 	}
 
-	public <T> List<DBObject> findBatchPartPageDBObject(String collectionName, DBObject query, DBObject orderBy,
+	public <T> List<DBObject> findBatchPagePartDBObject(String collectionName, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO) {
 
-		return FindBatchUtilOri.findBatchPartPageDBObject(collectionName, query, orderBy, returnFields, pageVO);
+		return FindBatchUtilOri.findBatchPagePartDBObject(collectionName, query, orderBy, returnFields, pageVO);
 	}
 }

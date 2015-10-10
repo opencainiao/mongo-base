@@ -425,10 +425,10 @@ public interface IBaseDaoMongo {
 	public <T> List<T> findBatchPage(Class<T> entityClass, String collectionNameIn, DBObject query, DBObject orderBy,
 			PageVO pageVO);
 
-	public <T> List<T> findBatchPartPage(Class<T> entityClass, DBObject query, DBObject orderBy, DBObject returnFields,
+	public <T> List<T> findBatchPagePart(Class<T> entityClass, DBObject query, DBObject orderBy, DBObject returnFields,
 			PageVO pageVO);
 
-	public <T> List<T> findBatchPartPage(Class<T> entityClass, String collectionNameIn, DBObject query,
+	public <T> List<T> findBatchPagePart(Class<T> entityClass, String collectionNameIn, DBObject query,
 			DBObject orderBy, DBObject returnFields, PageVO pageVO);
 
 	public <T> List<DBObject> findBatchPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
@@ -437,9 +437,9 @@ public interface IBaseDaoMongo {
 	public <T> List<DBObject> findBatchPageDBObject(String collectionName, DBObject query, DBObject orderBy,
 			PageVO pageVO);
 
-	public <T> List<DBObject> findBatchPartPageDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
+	public <T> List<DBObject> findBatchPagePartDBObject(Class<T> entityClass, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO);
 
-	public <T> List<DBObject> findBatchPartPageDBObject(String collectionName, DBObject query, DBObject orderBy,
+	public <T> List<DBObject> findBatchPagePartDBObject(String collectionName, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO);
 }
