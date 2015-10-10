@@ -1,12 +1,16 @@
 package com.mou.mongodb.base.springdb.op;
 
 import org.bson.types.ObjectId;
+import org.mou.common.StringUtil;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.convert.MongoConverter;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
+import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
+import com.mou.mongodb.base.util.EntityClassUtil;
 import com.mou.mongodb.base.util.SetInfUtil;
 
 /****
@@ -154,5 +158,121 @@ public class FindOneUtil {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		return op.findOne(query, entityClass, collectionName);
+	}
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param collectionNameIn
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public static <T> T findOnePart(Class<T> entityClass, String collectionNameIn, DBObject query,
+			DBObject returnFields) {
+
+		String collectionName = collectionNameIn;
+		if (collectionName == null) {
+			collectionName = EntityClassUtil.getCollectionName(entityClass);
+		}
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return null;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		DBObject object = coll.findOne(query, returnFields);
+
+		if (object != null) {
+			MongoConverter converter = op.getConverter();
+			return converter.read(entityClass, object);
+		}
+
+		return null;
+	}
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public static <T> T findOnePart(Class<T> entityClass, DBObject query, DBObject returnFields) {
+
+		String collectionName = EntityClassUtil.getCollectionName(entityClass);
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return null;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		DBObject object = coll.findOne(query, returnFields);
+
+		if (object != null) {
+			MongoConverter converter = op.getConverter();
+			return converter.read(entityClass, object);
+		}
+
+		return null;
+	}
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param collectionNameIn
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public static <T> DBObject findOnePartDBObject(Class<T> entityClass, String collectionNameIn, DBObject query,
+			DBObject returnFields) {
+
+		String collectionName = collectionNameIn;
+		if (collectionName == null) {
+			collectionName = EntityClassUtil.getCollectionName(entityClass);
+		}
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return null;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		DBObject object = coll.findOne(query, returnFields);
+
+		return object;
+	}
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public static <T> DBObject findOnePartDBObject(Class<T> entityClass, DBObject query, DBObject returnFields) {
+
+		String collectionName = EntityClassUtil.getCollectionName(entityClass);
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return null;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		DBObject object = coll.findOne(query, returnFields);
+
+		return object;
 	}
 }

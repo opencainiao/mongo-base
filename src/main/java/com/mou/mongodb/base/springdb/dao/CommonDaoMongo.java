@@ -287,4 +287,59 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 
 		return FindBatchUtilOri.findBatchPagePartDBObject(collectionName, query, orderBy, returnFields, pageVO);
 	}
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param collectionNameIn
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public <T> T findOnePart(Class<T> entityClass, String collectionNameIn, DBObject query, DBObject returnFields) {
+
+		return FindOneUtil.findOnePart(entityClass, collectionNameIn, query, returnFields);
+	}
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public <T> T findOnePart(Class<T> entityClass, DBObject query, DBObject returnFields) {
+
+		return FindOneUtil.findOnePart(entityClass, query, returnFields);
+	}
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param collectionNameIn
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public <T> DBObject findOnePartDBObject(Class<T> entityClass, String collectionNameIn, DBObject query,
+			DBObject returnFields) {
+
+		return FindOneUtil.findOnePartDBObject(entityClass, collectionNameIn, query, returnFields);
+	}
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public <T> DBObject findOnePartDBObject(Class<T> entityClass, DBObject query, DBObject returnFields) {
+
+		return FindOneUtil.findOnePartDBObject(entityClass, query, returnFields);
+	}
 }

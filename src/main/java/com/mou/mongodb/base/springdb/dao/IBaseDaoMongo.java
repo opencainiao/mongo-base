@@ -442,4 +442,47 @@ public interface IBaseDaoMongo {
 
 	public <T> List<DBObject> findBatchPagePartDBObject(String collectionName, DBObject query, DBObject orderBy,
 			DBObject returnFields, PageVO pageVO);
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param collectionNameIn
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public <T> T findOnePart(Class<T> entityClass, String collectionNameIn, DBObject query, DBObject returnFields);
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public <T> T findOnePart(Class<T> entityClass, DBObject query, DBObject returnFields);
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param collectionNameIn
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public <T> DBObject findOnePartDBObject(Class<T> entityClass, String collectionNameIn, DBObject query,
+			DBObject returnFields);
+
+	/****
+	 * 查询一个对象的一部分
+	 * 
+	 * @param entityClass
+	 * @param query
+	 * @param returnFields
+	 * @return
+	 */
+	public <T> DBObject findOnePartDBObject(Class<T> entityClass, DBObject query, DBObject returnFields);
 }
