@@ -2,6 +2,7 @@ package com.mou.mongodb.base.springdb.op;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
+import com.mongodb.DBObject;
 import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
 
 /****
@@ -94,7 +96,7 @@ public class DeleteUtil {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> int removeByIdLogic(String _id, Class<T> entityClass) {
+	public static <T> int removeByIdLogic(String _id, Class<T> entityClass, DBObject toUpdate) {
 
 		if (!ObjectId.isValid(_id)) {
 			return 0;
@@ -104,8 +106,15 @@ public class DeleteUtil {
 		Query query = new Query(criteria);
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		Update update = new Update().set("del_flg", "1").set("del_flg_name",
-				"已删除");
+		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
+		
+		if (toUpdate != null){
+			Set<String> keys = toUpdate.keySet();
+			
+			for (String key : keys){
+				update.set(key, toUpdate.get(key));
+			}
+		}
 
 		return op.updateFirst(query, update, entityClass).getN();
 
@@ -119,7 +128,7 @@ public class DeleteUtil {
 	 * @param collectionName
 	 * @return
 	 */
-	public static int removeByIdLogic(String _id, String collectionName) {
+	public static int removeByIdLogic(String _id, String collectionName, DBObject toUpdate) {
 
 		if (!ObjectId.isValid(_id)) {
 			return 0;
@@ -129,8 +138,14 @@ public class DeleteUtil {
 		Query query = new Query(criteria);
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		Update update = new Update().set("del_flg", "1").set("del_flg_name",
-				"已删除");
+		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
+		if (toUpdate != null){
+			Set<String> keys = toUpdate.keySet();
+			
+			for (String key : keys){
+				update.set(key, toUpdate.get(key));
+			}
+		}
 
 		return op.updateFirst(query, update, collectionName).getN();
 	}
@@ -142,13 +157,11 @@ public class DeleteUtil {
 	 * @param entityClass
 	 * @return
 	 */
-	public static <T> int removeByConditionLogic(Query query,
-			Class<T> entityClass) {
+	public static <T> int removeByConditionLogic(Query query, Class<T> entityClass) {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 
-		Update update = new Update().set("del_flg", "1").set("del_flg_name",
-				"已删除");
+		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
 
 		return op.updateMulti(query, update, entityClass).getN();
 	}
@@ -165,8 +178,7 @@ public class DeleteUtil {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 
-		Update update = new Update().set("del_flg", "1").set("del_flg_name",
-				"已删除");
+		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
 
 		return op.updateMulti(query, update, collectionName).getN();
 	}
@@ -177,8 +189,7 @@ public class DeleteUtil {
 	 * @param _ids
 	 * @return
 	 */
-	public static <T> int removeByIdsLogic(List<String> _ids,
-			Class<T> entityClass) {
+	public static <T> int removeByIdsLogic(List<String> _ids, Class<T> entityClass) {
 
 		List<String> _idsNew = new ArrayList<String>();
 
@@ -192,8 +203,7 @@ public class DeleteUtil {
 		Query query = new Query(criteria);
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		Update update = new Update().set("del_flg", "1").set("del_flg_name",
-				"已删除");
+		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
 
 		return op.updateMulti(query, update, entityClass).getN();
 	}
@@ -218,8 +228,7 @@ public class DeleteUtil {
 		Query query = new Query(criteria);
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		Update update = new Update().set("del_flg", "1").set("del_flg_name",
-				"已删除");
+		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
 
 		return op.updateMulti(query, update, collectionName).getN();
 	}

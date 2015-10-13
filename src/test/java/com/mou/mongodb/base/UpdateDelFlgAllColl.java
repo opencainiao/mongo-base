@@ -29,11 +29,12 @@ public class UpdateDelFlgAllColl {
 			DBCollection collection = db.getCollection(collectionName);
 
 			DBObject query = new BasicDBObject();
-			query.put("delflg", "0");
+			query.put("del_flg", "1");
 
 			DBObject update = new BasicDBObject();
 			DBObject updateSet = new BasicDBObject();
 			updateSet.put("del_flg", "0");
+			updateSet.put("use_flg", "1");
 			update.put("$set", updateSet);
 
 			WriteResult wr = collection.updateMulti(query, update);
@@ -129,11 +130,10 @@ public class UpdateDelFlgAllColl {
 	}
 
 	public static void main(String[] args) {
-		// updateDelFlg();
+		 updateDelFlg();
 
-		renameAllCollection("useflg", "use_flg");
-
-		renameAllCollection("delflg", "del_flg");
+//		renameAllCollection("useflg", "use_flg");
+//		renameAllCollection("delflg", "del_flg");
 
 		// delColAllCollection("use_flg");
 	}

@@ -83,7 +83,7 @@ public interface IBaseDaoMongo {
 	 * @param entityClass
 	 * @return
 	 */
-	public <T> int removeByIdLogic(String _id, Class<T> entityClass);
+	public <T> int removeByIdLogic(String _id, Class<T> entityClass, DBObject dbObject);
 
 	/****
 	 * 删除一条
@@ -93,7 +93,7 @@ public interface IBaseDaoMongo {
 	 * @param collectionName
 	 * @return
 	 */
-	public int removeByIdLogic(String _id, String collectionName);
+	public int removeByIdLogic(String _id, String collectionName, DBObject dbObject);
 
 	/****
 	 * 删除全部满足条件的数据
@@ -490,7 +490,7 @@ public interface IBaseDaoMongo {
 
 	public <T> boolean isExist(DBObject query, Class<T> entityClass, String collectionNameIn);
 
-	public <T> long count(Class<T> entityClass, DBObject query) ;
+	public <T> long count(Class<T> entityClass, DBObject query);
 
-	public long count(String collectionName, DBObject query) ;
+	public long count(String collectionName, DBObject query);
 }

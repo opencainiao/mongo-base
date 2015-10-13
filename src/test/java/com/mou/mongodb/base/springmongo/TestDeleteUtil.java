@@ -59,7 +59,7 @@ public class TestDeleteUtil {
 	public void testRemoveByIdLogicStringClassOfT() {
 
 		String _id = "55d4055c7d017c0e20191d80";
-		int removeResultNum = DeleteUtil.removeByIdLogic(_id, Client.class);
+		int removeResultNum = DeleteUtil.removeByIdLogic(_id, Client.class,null);
 		System.out.println(removeResultNum);
 
 	}
@@ -68,7 +68,7 @@ public class TestDeleteUtil {
 	public void testRemoveByIdLogicStringString() {
 
 		String _id = "55d4055c7d017c0e20191d7f";
-		int removeResultNum = DeleteUtil.removeByIdLogic(_id, "client");
+		int removeResultNum = DeleteUtil.removeByIdLogic(_id, "client",null);
 		System.out.println(removeResultNum);
 	}
 

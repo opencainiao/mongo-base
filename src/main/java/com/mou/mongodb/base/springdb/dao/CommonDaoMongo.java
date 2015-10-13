@@ -44,12 +44,12 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 		return DeleteUtil.removeByCondition(query, collectionName);
 	}
 
-	public <T> int removeByIdLogic(String _id, Class<T> entityClass) {
-		return DeleteUtil.removeByIdLogic(_id, entityClass);
+	public <T> int removeByIdLogic(String _id, Class<T> entityClass, DBObject toUpdate) {
+		return DeleteUtil.removeByIdLogic(_id, entityClass,toUpdate);
 	}
 
-	public int removeByIdLogic(String _id, String collectionName) {
-		return DeleteUtil.removeByIdLogic(_id, collectionName);
+	public int removeByIdLogic(String _id, String collectionName, DBObject toUpdate) {
+		return DeleteUtil.removeByIdLogic(_id, collectionName,toUpdate);
 	}
 
 	public <T> int removeByConditionLogic(Query query, Class<T> entityClass) {
