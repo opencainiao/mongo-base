@@ -3,6 +3,7 @@ package com.mou.mongodb.base.domain;
 import org.bson.types.ObjectId;
 import org.mou.common.DateUtil;
 import org.mou.common.JsonUtil;
+import org.mou.common.StringUtil;
 
 /****
  * 基于mongodb的基本对象域模型
@@ -26,9 +27,15 @@ public class BaseModel {
 	protected String del_flg_name; // 删除标志名称 0-未删除
 
 	public String get_id_m() {
-		if (this.get_id() == null) {
-			return null;
+
+		if (!StringUtil.isEmpty(this._id_m)) {
+			return this._id_m;
 		}
+
+		if (this.get_id() == null) {
+			return "";
+		}
+		
 		return get_id().toString();
 	}
 
