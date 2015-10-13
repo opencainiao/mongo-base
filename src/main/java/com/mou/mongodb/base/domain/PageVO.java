@@ -11,7 +11,7 @@ public class PageVO {
 	private int pageCount; // 每页数据条数
 
 	private int startOffset; // 开始条数
-	private int total; // 所有数据条数
+	private long total; // 所有数据条数
 	private int totalPage; // 所有页数
 
 	private List rows; // 所有查询结果
@@ -28,7 +28,7 @@ public class PageVO {
 	 * 根据总数，计算共有多少页
 	 */
 	public void calMaxPage() {
-		totalPage = total / pageCount;
+		totalPage = (int)(total / pageCount);
 
 		if (total % pageCount != 0) {
 			totalPage += 1;
@@ -49,9 +49,9 @@ public class PageVO {
 		if (page == 0) {
 			page = 1;
 		}
-		startOffset = (page - 1) * pageCount;
+		startOffset = (int)((page - 1) * pageCount);
 
-		return startOffset;
+		return (int)startOffset;
 	}
 
 	public void setStartOffset(int startOffset) {
@@ -94,11 +94,11 @@ public class PageVO {
 		this.page = page;
 	}
 
-	public int getTotal() {
+	public long getTotal() {
 		return total;
 	}
 
-	public void setTotal(int total) {
+	public void setTotal(long total) {
 		this.total = total;
 	}
 	

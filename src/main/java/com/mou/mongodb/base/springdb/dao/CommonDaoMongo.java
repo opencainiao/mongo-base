@@ -352,4 +352,14 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 
 		return FindOneUtil.isExist(query, entityClass, collectionNameIn);
 	}
+
+	public <T> long count(Class<T> entityClass, DBObject query) {
+
+		return FindBatchUtilOri.count(entityClass, query);
+	}
+
+	public long count(String collectionName, DBObject query) {
+
+		return FindBatchUtilOri.count(collectionName, query);
+	}
 }

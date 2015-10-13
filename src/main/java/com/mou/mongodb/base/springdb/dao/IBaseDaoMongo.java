@@ -489,4 +489,8 @@ public interface IBaseDaoMongo {
 	public <T> boolean isExist(DBObject query, Class<T> entityClass);
 
 	public <T> boolean isExist(DBObject query, Class<T> entityClass, String collectionNameIn);
+
+	public <T> long count(Class<T> entityClass, DBObject query) ;
+
+	public long count(String collectionName, DBObject query) ;
 }

@@ -28,7 +28,7 @@ public class PageSearchResultUtil {
 	 */
 	public static PageVO handleDBObjList(List<DBObject> list, PageVO pageVO) {
 
-		int total = pageVO.getTotal();
+		long total = pageVO.getTotal();
 
 		if (list != null) {
 			for (DBObject dbobj : list) {
@@ -122,7 +122,7 @@ public class PageSearchResultUtil {
 	 */
 	public static <T extends BaseModel> PageVO handleBaseModelList(List<T> list, PageVO pageVO) {
 
-		int total = pageVO.getTotal();
+		long total = pageVO.getTotal();
 
 		if (list != null) {
 

@@ -864,4 +864,30 @@ public class FindBatchUtilOri {
 
 		return result;
 	}
+
+	public static <T> long count(Class<T> entityClass, DBObject query) {
+
+		String collectionName = EntityClassUtil.getCollectionName(entityClass);
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return 0;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		return coll.count(query);
+	}
+
+	public static long count(String collectionName, DBObject query) {
+
+		if (StringUtil.isEmpty(collectionName)) {
+			return 0;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		return coll.count(query);
+	}
 }

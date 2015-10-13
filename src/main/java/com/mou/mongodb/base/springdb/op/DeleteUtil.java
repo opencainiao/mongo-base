@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
 
 /****
- * 删除数据的帮助类
+ * 鍒犻櫎鏁版嵁鐨勫府鍔╃被
  * 
  * @author NBQ
  *
@@ -20,7 +20,7 @@ import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
 public class DeleteUtil {
 
 	/****
-	 * 删除一条
+	 * 鍒犻櫎涓�潯
 	 * 
 	 * @param _id
 	 * @param entityClass
@@ -40,7 +40,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除一条
+	 * 鍒犻櫎涓�潯
 	 * 
 	 * @param _id
 	 * @param entityClass
@@ -61,7 +61,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除全部满足条件的数据
+	 * 鍒犻櫎鍏ㄩ儴婊¤冻鏉′欢鐨勬暟鎹�
 	 * 
 	 * @param _id
 	 * @param entityClass
@@ -74,7 +74,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除全部满足条件的数据
+	 * 鍒犻櫎鍏ㄩ儴婊¤冻鏉′欢鐨勬暟鎹�
 	 * 
 	 * @param _id
 	 * @param entityClass
@@ -88,7 +88,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除一条
+	 * 鍒犻櫎涓�潯
 	 * 
 	 * @param _id
 	 * @param entityClass
@@ -112,7 +112,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除一条
+	 * 鍒犻櫎涓�潯
 	 * 
 	 * @param _id
 	 * @param entityClass
@@ -136,7 +136,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除全部满足条件的数据
+	 * 鍒犻櫎鍏ㄩ儴婊¤冻鏉′欢鐨勬暟鎹�
 	 * 
 	 * @param _id
 	 * @param entityClass
@@ -154,7 +154,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除全部满足条件的数据
+	 * 鍒犻櫎鍏ㄩ儴婊¤冻鏉′欢鐨勬暟鎹�
 	 * 
 	 * @param _id
 	 * @param entityClass
@@ -172,7 +172,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除数据，根据ids（逻辑删除）
+	 * 鍒犻櫎鏁版嵁锛屾牴鎹甶ds锛堥�杈戝垹闄わ級
 	 * 
 	 * @param _ids
 	 * @return
@@ -199,7 +199,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除数据，根据ids（逻辑删除）
+	 * 鍒犻櫎鏁版嵁锛屾牴鎹甶ds锛堥�杈戝垹闄わ級
 	 * 
 	 * @param _ids
 	 * @return
@@ -225,7 +225,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除数据，根据ids
+	 * 鍒犻櫎鏁版嵁锛屾牴鎹甶ds
 	 * 
 	 * @param _ids
 	 * @return
@@ -249,7 +249,7 @@ public class DeleteUtil {
 	}
 
 	/****
-	 * 删除数据，根据ids
+	 * 鍒犻櫎鏁版嵁锛屾牴鎹甶ds
 	 * 
 	 * @param _ids
 	 * @return
