@@ -43,7 +43,7 @@ public class UserManage {
 		
 		DBObject update = new BasicDBObject();
 		DBObject updateSet = new BasicDBObject();
-		updateSet.put("delflg", "0");
+		updateSet.put("del_flg", "0");
 		update.put("$set", updateSet);
 		
 		DBCollection collection = MongoTemplateHelper

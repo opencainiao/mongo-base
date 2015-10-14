@@ -3,12 +3,16 @@ package com.mou.mongodb.base.springdb.op;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.mou.common.JsonUtil;
 import org.springframework.data.mongodb.core.MongoOperations;
 
 import com.mou.mongodb.base.domain.BaseModel;
 import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
 
 public class InsertUtil {
+	private static final Logger logger = LogManager.getLogger(FileOp.class);
 
 	/****
 	 * 插入一个对象
@@ -25,6 +29,7 @@ public class InsertUtil {
 		model.setDel_flg(false);
 		op.insert(model);
 
+		logger.debug("inserted-result\n,{}",JsonUtil.getPrettyJsonStr(model));
 		return model.get_id_m();
 	}
 
@@ -41,7 +46,7 @@ public class InsertUtil {
 		for (BaseModel model : models) {
 			model.setDel_flg(false);
 		}
-		
+
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		op.insertAll(models);
 

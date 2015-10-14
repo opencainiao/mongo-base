@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
 import com.mongodb.DBObject;
+import com.mou.mongodb.base.domain.BaseModelWithUseFlg;
 import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
 
 /****
@@ -108,6 +109,10 @@ public class DeleteUtil {
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
 		
+		if (BaseModelWithUseFlg.class.isAssignableFrom(entityClass)){
+			update.set("use_flg", "0").set("use_flg_name", "未启用");
+		}
+		
 		if (toUpdate != null){
 			Set<String> keys = toUpdate.keySet();
 			
@@ -139,6 +144,7 @@ public class DeleteUtil {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
+		
 		if (toUpdate != null){
 			Set<String> keys = toUpdate.keySet();
 			
@@ -163,6 +169,10 @@ public class DeleteUtil {
 
 		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
 
+		if (BaseModelWithUseFlg.class.isAssignableFrom(entityClass)){
+			update.set("use_flg", "0").set("use_flg_name", "未启用");
+		}
+		
 		return op.updateMulti(query, update, entityClass).getN();
 	}
 
@@ -204,7 +214,10 @@ public class DeleteUtil {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
-
+		if (BaseModelWithUseFlg.class.isAssignableFrom(entityClass)){
+			update.set("use_flg", "0").set("use_flg_name", "未启用");
+		}
+		
 		return op.updateMulti(query, update, entityClass).getN();
 	}
 
@@ -281,4 +294,8 @@ public class DeleteUtil {
 		return op.remove(query, collectionName).getN();
 	}
 
+	public static void main(String[] args) {
+		System.out.println(String.class.isAssignableFrom(Object.class));
+		System.out.println(Object.class.isAssignableFrom(String.class));
+	}
 }
