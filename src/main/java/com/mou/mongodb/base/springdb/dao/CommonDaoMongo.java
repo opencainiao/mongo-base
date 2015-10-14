@@ -1,16 +1,24 @@
 package com.mou.mongodb.base.springdb.dao;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.mongodb.DB;
 import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
+import com.mongodb.gridfs.GridFSDBFile;
 import com.mou.mongodb.base.domain.BaseModel;
 import com.mou.mongodb.base.domain.PageVO;
+import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
 import com.mou.mongodb.base.springdb.op.DeleteUtil;
+import com.mou.mongodb.base.springdb.op.FileOp;
 import com.mou.mongodb.base.springdb.op.FindBatchUtil;
 import com.mou.mongodb.base.springdb.op.FindBatchUtilOri;
 import com.mou.mongodb.base.springdb.op.FindOneUtil;
@@ -45,11 +53,11 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 	}
 
 	public <T> int removeByIdLogic(String _id, Class<T> entityClass, DBObject toUpdate) {
-		return DeleteUtil.removeByIdLogic(_id, entityClass,toUpdate);
+		return DeleteUtil.removeByIdLogic(_id, entityClass, toUpdate);
 	}
 
 	public int removeByIdLogic(String _id, String collectionName, DBObject toUpdate) {
-		return DeleteUtil.removeByIdLogic(_id, collectionName,toUpdate);
+		return DeleteUtil.removeByIdLogic(_id, collectionName, toUpdate);
 	}
 
 	public <T> int removeByConditionLogic(Query query, Class<T> entityClass) {
@@ -361,5 +369,29 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 	public long count(String collectionName, DBObject query) {
 
 		return FindBatchUtilOri.count(collectionName, query);
+	}
+
+	public String saveFile(InputStream inputStream, String newFileName) {
+		return FileOp.saveFile(inputStream, newFileName);
+	}
+
+	public String saveFile(File file) throws IOException {
+
+		return FileOp.saveFile(file);
+	}
+
+	public void removeFile(String fileId){
+		FileOp.removeFile(fileId);
+	}
+	
+	public  GridFSDBFile findFileBy_Id(String _id) {
+
+		return FileOp.findFileBy_Id(_id);
+	}
+	
+	public DB getDb() {
+		
+		MongoTemplate op = MongoTemplateHelper.getMongoTemplate();
+		return op.getDb();
 	}
 }

@@ -23,7 +23,7 @@ public class MongoTemplateHelper {
 	 * @param databaseName
 	 * @return
 	 */
-	public static MongoOperations getMongoTemplate() {
+	public static MongoTemplate getMongoTemplate() {
 
 		return (MongoTemplate) context.getBean("mongoTemplate");
 	}
