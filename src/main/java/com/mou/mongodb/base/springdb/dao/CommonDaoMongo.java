@@ -5,12 +5,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import org.mou.common.StringUtil;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.DB;
+import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import com.mongodb.gridfs.GridFSDBFile;
@@ -24,6 +27,7 @@ import com.mou.mongodb.base.springdb.op.FindBatchUtilOri;
 import com.mou.mongodb.base.springdb.op.FindOneUtil;
 import com.mou.mongodb.base.springdb.op.InsertUtil;
 import com.mou.mongodb.base.springdb.op.UpdateUtil;
+import com.mou.mongodb.base.util.EntityClassUtil;
 
 @Repository("commonDaoMongo")
 public class CommonDaoMongo implements IBaseDaoMongo {
@@ -366,6 +370,16 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 		return FindBatchUtilOri.count(entityClass, query);
 	}
 
+	public <T> int removeByCondition(DBObject query, Class<T> entityClass) {
+
+		return DeleteUtil.removeByCondition(query, entityClass);
+	}
+
+	public int removeByCondition(DBObject query, String collectionName) {
+
+		return DeleteUtil.removeByCondition(query, collectionName);
+	}
+
 	public long count(String collectionName, DBObject query) {
 
 		return FindBatchUtilOri.count(collectionName, query);
@@ -380,17 +394,17 @@ public class CommonDaoMongo implements IBaseDaoMongo {
 		return FileOp.saveFile(file);
 	}
 
-	public void removeFile(String fileId){
+	public void removeFile(String fileId) {
 		FileOp.removeFile(fileId);
 	}
-	
-	public  GridFSDBFile findFileBy_Id(String _id) {
+
+	public GridFSDBFile findFileBy_Id(String _id) {
 
 		return FileOp.findFileBy_Id(_id);
 	}
-	
+
 	public DB getDb() {
-		
+
 		MongoTemplate op = MongoTemplateHelper.getMongoTemplate();
 		return op.getDb();
 	}

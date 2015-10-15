@@ -130,10 +130,10 @@ public class UpdateDelFlgAllColl {
 	}
 
 	public static void main(String[] args) {
-		 updateDelFlg();
+//		 updateDelFlg();
 
-//		renameAllCollection("useflg", "use_flg");
-//		renameAllCollection("delflg", "del_flg");
+		renameAllCollection("useflg", "use_flg");
+		renameAllCollection("delflg", "del_flg");
 
 		// delColAllCollection("use_flg");
 	}

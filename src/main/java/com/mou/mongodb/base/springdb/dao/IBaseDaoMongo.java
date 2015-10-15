@@ -499,6 +499,10 @@ public interface IBaseDaoMongo {
 
 	public long count(String collectionName, DBObject query);
 
+	public <T> int removeByCondition(DBObject query, Class<T> entityClass);
+
+	public int removeByCondition(DBObject query, String collectionName);
+
 	public String saveFile(InputStream inputStream, String newFileName);
 
 	public String saveFile(File file) throws IOException;

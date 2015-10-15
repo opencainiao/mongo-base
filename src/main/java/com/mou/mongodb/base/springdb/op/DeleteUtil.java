@@ -5,14 +5,17 @@ import java.util.List;
 import java.util.Set;
 
 import org.bson.types.ObjectId;
+import org.mou.common.StringUtil;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
+import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mou.mongodb.base.domain.BaseModelWithUseFlg;
 import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
+import com.mou.mongodb.base.util.EntityClassUtil;
 
 /****
  * 鍒犻櫎鏁版嵁鐨勫府鍔╃被
@@ -108,15 +111,15 @@ public class DeleteUtil {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
-		
-		if (BaseModelWithUseFlg.class.isAssignableFrom(entityClass)){
+
+		if (BaseModelWithUseFlg.class.isAssignableFrom(entityClass)) {
 			update.set("use_flg", "0").set("use_flg_name", "未启用");
 		}
-		
-		if (toUpdate != null){
+
+		if (toUpdate != null) {
 			Set<String> keys = toUpdate.keySet();
-			
-			for (String key : keys){
+
+			for (String key : keys) {
 				update.set(key, toUpdate.get(key));
 			}
 		}
@@ -144,11 +147,11 @@ public class DeleteUtil {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
-		
-		if (toUpdate != null){
+
+		if (toUpdate != null) {
 			Set<String> keys = toUpdate.keySet();
-			
-			for (String key : keys){
+
+			for (String key : keys) {
 				update.set(key, toUpdate.get(key));
 			}
 		}
@@ -169,10 +172,10 @@ public class DeleteUtil {
 
 		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
 
-		if (BaseModelWithUseFlg.class.isAssignableFrom(entityClass)){
+		if (BaseModelWithUseFlg.class.isAssignableFrom(entityClass)) {
 			update.set("use_flg", "0").set("use_flg_name", "未启用");
 		}
-		
+
 		return op.updateMulti(query, update, entityClass).getN();
 	}
 
@@ -214,10 +217,10 @@ public class DeleteUtil {
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 		Update update = new Update().set("del_flg", "1").set("del_flg_name", "已删除");
-		if (BaseModelWithUseFlg.class.isAssignableFrom(entityClass)){
+		if (BaseModelWithUseFlg.class.isAssignableFrom(entityClass)) {
 			update.set("use_flg", "0").set("use_flg_name", "未启用");
 		}
-		
+
 		return op.updateMulti(query, update, entityClass).getN();
 	}
 
@@ -292,6 +295,44 @@ public class DeleteUtil {
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
 
 		return op.remove(query, collectionName).getN();
+	}
+
+	/****
+	 * 根据条件删除
+	 * 
+	 * @param _id
+	 * @param entityClass
+	 * @return
+	 */
+	public static <T> int removeByCondition(DBObject query, Class<T> entityClass) {
+
+		String collectionName = EntityClassUtil.getCollectionName(entityClass);
+		if (StringUtil.isEmpty(collectionName)) {
+			return 0;
+		}
+
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		return coll.remove(query).getN();
+	}
+
+	/****
+	 * 根据条件删除
+	 * 
+	 * @param _id
+	 * @param entityClass
+	 * @param collectionName
+	 * @return
+	 */
+	public static int removeByCondition(DBObject query, String collectionName) {
+		if (StringUtil.isEmpty(collectionName)) {
+			return 0;
+		}
+		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
+		DBCollection coll = op.getCollection(collectionName);
+
+		return coll.remove(query).getN();
 	}
 
 	public static void main(String[] args) {
