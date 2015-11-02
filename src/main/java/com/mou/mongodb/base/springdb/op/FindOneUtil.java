@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
+import com.mou.mongodb.base.domain.BaseModel;
 import com.mou.mongodb.base.springdb.manage.MongoTemplateHelper;
 import com.mou.mongodb.base.util.EntityClassUtil;
 import com.mou.mongodb.base.util.SetInfUtil;
@@ -69,7 +70,14 @@ public class FindOneUtil {
 		}
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		return op.findById(_id, entityClass);
+
+		T returnObj = op.findById(_id, entityClass);
+
+		if (returnObj instanceof BaseModel) {
+			((BaseModel) returnObj).set_id_m(((BaseModel) returnObj).get_id_m());
+		}
+
+		return returnObj;
 	}
 
 	/****
@@ -86,7 +94,14 @@ public class FindOneUtil {
 		}
 
 		MongoOperations op = MongoTemplateHelper.getMongoTemplate();
-		return op.findById(_id, entityClass, collectionName);
+
+		T returnObj = op.findById(_id, entityClass, collectionName);
+
+		if (returnObj instanceof BaseModel) {
+			((BaseModel) returnObj).set_id_m(((BaseModel) returnObj).get_id_m());
+		}
+
+		return returnObj;
 	}
 
 	/****
